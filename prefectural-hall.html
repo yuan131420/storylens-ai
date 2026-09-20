@@ -1293,8 +1293,7 @@ async function askStoryLens() {
     answerText.innerText =
       data.answer;
 
-groundedBadge.innerText = "DEBUG STATUS: " + String(data.status);
-groundedBadge.style.display = "inline-block";
+
 if (data.status === "insufficient_evidence") {
 
   groundedBadge.innerText =
