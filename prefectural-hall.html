@@ -81,7 +81,7 @@
       line-height: 1.7;
     }
 
-    /* Sections */
+    /* General Sections */
 
     .section {
       margin-top: 38px;
@@ -95,6 +95,7 @@
     .section-description {
       color: #70817f;
       margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     /* Language */
@@ -196,13 +197,22 @@
       padding: 28px;
     }
 
-    .ask-box h2 {
-      margin-bottom: 8px;
+    .ask-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: #74c4b7;
+      margin-bottom: 10px;
     }
 
-    .ask-box p {
+    .ask-box h2 {
+      margin-bottom: 8px;
+      font-size: 27px;
+    }
+
+    .ask-intro {
       color: #c8dcd8;
-      line-height: 1.5;
+      line-height: 1.6;
       margin-bottom: 20px;
     }
 
@@ -214,6 +224,7 @@
     .question input {
       flex: 1;
       border: none;
+      outline: none;
       border-radius: 12px;
       padding: 14px;
       font-size: 15px;
@@ -222,11 +233,114 @@
     .question button {
       border: none;
       border-radius: 12px;
-      padding: 14px 18px;
+      padding: 14px 20px;
       background: #74c4b7;
       color: #103b38;
       font-weight: bold;
       cursor: pointer;
+    }
+
+    .question button:hover {
+      background: #8bd3c7;
+    }
+
+    /* Suggested Questions */
+
+    .suggested-title {
+      margin-top: 18px;
+      margin-bottom: 9px;
+      color: #b9d4cf;
+      font-size: 12px;
+    }
+
+    .suggested-questions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .suggested {
+      background: transparent;
+      color: #dcebe8;
+      border: 1px solid #50736f;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .suggested:hover {
+      background: #204d49;
+    }
+
+    /* AI Response */
+
+    .ai-response {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      color: #123c3b;
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .ai-response.show {
+      display: block;
+    }
+
+    .response-label {
+      color: #2a8d82;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .user-question {
+      font-weight: bold;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .answer {
+      color: #48625f;
+      line-height: 1.75;
+    }
+
+    .grounded-badge {
+      display: inline-block;
+      margin-top: 17px;
+      padding: 7px 10px;
+      border-radius: 20px;
+      background: #e6f1ee;
+      color: #25776f;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .response-sources {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #e1e9e7;
+      color: #738582;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* Responsible AI */
+
+    .responsible-ai {
+      margin-top: 22px;
+      border: 1px solid #426762;
+      border-radius: 14px;
+      padding: 15px;
+      color: #c8dcd8;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .responsible-ai strong {
+      color: white;
     }
 
     /* Sources */
@@ -246,6 +360,15 @@
       color: #70817f;
       font-size: 14px;
       line-height: 1.6;
+    }
+
+    .source-item {
+      margin-top: 18px;
+    }
+
+    .source-number {
+      color: #2a8d82;
+      font-weight: bold;
     }
 
     footer {
@@ -279,7 +402,7 @@
 
   <div class="container">
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
 
     <nav>
 
@@ -294,7 +417,7 @@
     </nav>
 
 
-    <!-- Hero -->
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -320,7 +443,7 @@
     </section>
 
 
-    <!-- Language -->
+    <!-- LANGUAGE -->
 
     <section class="section">
 
@@ -345,7 +468,7 @@
     </section>
 
 
-    <!-- Experience Modes -->
+    <!-- EXPERIENCE MODES -->
 
     <section class="section">
 
@@ -406,7 +529,7 @@
     </section>
 
 
-    <!-- Story Output -->
+    <!-- STORY OUTPUT -->
 
     <section id="storyBox" class="story-box">
 
@@ -424,34 +547,114 @@
     </section>
 
 
-    <!-- Ask StoryLens -->
+    <!-- ASK STORYLENS -->
 
     <section class="ask-box">
 
+      <div class="ask-label">
+        AI CULTURAL GUIDE
+      </div>
+
       <h2>Ask StoryLens</h2>
 
-      <p>
-        Curious about this place?
-        Ask a question and explore its story further.
+      <p class="ask-intro">
+        Curious about this place? Ask StoryLens a question.
+        Answers are designed to be grounded in trusted cultural
+        and historical sources.
       </p>
+
 
       <div class="question">
 
         <input
+          id="questionInput"
           type="text"
           placeholder="Why is this place important?"
+          onkeydown="handleEnter(event)"
         >
 
-        <button onclick="demoAI()">
+        <button onclick="askStoryLens()">
           Ask →
         </button>
+
+      </div>
+
+
+      <!-- Suggested Questions -->
+
+      <div class="suggested-title">
+        TRY ASKING
+      </div>
+
+      <div class="suggested-questions">
+
+        <button
+          class="suggested"
+          onclick="askSuggested('Why is this building important?')">
+          Why is this building important?
+        </button>
+
+        <button
+          class="suggested"
+          onclick="askSuggested('When was it built?')">
+          When was it built?
+        </button>
+
+        <button
+          class="suggested"
+          onclick="askSuggested('Who designed this building?')">
+          Who designed it?
+        </button>
+
+      </div>
+
+
+      <!-- AI Response -->
+
+      <div id="aiResponse" class="ai-response">
+
+        <div class="response-label">
+          STORYLENS ANSWER
+        </div>
+
+        <div
+          id="displayQuestion"
+          class="user-question">
+        </div>
+
+        <div
+          id="answerText"
+          class="answer">
+        </div>
+
+        <div class="grounded-badge">
+          ✓ Based on trusted sources
+        </div>
+
+        <div class="response-sources">
+          Sources: Taichung City Government Cultural Affairs Bureau
+          · Cultural Heritage Department of Taichung City
+        </div>
+
+      </div>
+
+
+      <!-- Responsible AI -->
+
+      <div class="responsible-ai">
+
+        <strong>Responsible AI:</strong>
+
+        StoryLens is designed to retrieve trusted cultural knowledge
+        before generating an answer. When reliable information is
+        unavailable, it should say so rather than invent historical facts.
 
       </div>
 
     </section>
 
 
-    <!-- Trusted Sources -->
+    <!-- TRUSTED SOURCES -->
 
     <section class="sources">
 
@@ -462,31 +665,42 @@
         instead of generating historical facts from imagination.
       </p>
 
-      <br>
 
-      <p>
-        <strong>
-          01 · Taichung City Government Cultural Affairs Bureau
-        </strong>
-        <br>
-        History of Taichung Prefectural Hall
-      </p>
+      <div class="source-item">
 
-      <br>
+        <p>
+          <span class="source-number">01 ·</span>
+          <strong>
+            Taichung City Government Cultural Affairs Bureau
+          </strong>
+          <br>
+          History of Taichung Prefectural Hall
+        </p>
 
-      <p>
-        <strong>
-          02 · Cultural Heritage Department of Taichung City
-        </strong>
-        <br>
-        National Monument Record: Taichung Prefectural Hall
-      </p>
+      </div>
 
-      <br>
 
-      <p style="font-size: 12px;">
-        Knowledge Base updated: September 2026
-      </p>
+      <div class="source-item">
+
+        <p>
+          <span class="source-number">02 ·</span>
+          <strong>
+            Cultural Heritage Department of Taichung City
+          </strong>
+          <br>
+          National Monument Record: Taichung Prefectural Hall
+        </p>
+
+      </div>
+
+
+      <div class="source-item">
+
+        <p style="font-size: 12px;">
+          Knowledge Base updated: September 2026
+        </p>
+
+      </div>
 
     </section>
 
@@ -499,6 +713,10 @@
 
 
   <script>
+
+    /* =========================================
+       STORY MODES
+       ========================================= */
 
     function showStory(mode) {
 
@@ -692,13 +910,189 @@
     }
 
 
-    /* AI DEMO - WILL BE CONNECTED LATER */
+    /* =========================================
+       ASK STORYLENS DEMO
+       ========================================= */
 
-    function demoAI() {
+    function askSuggested(question) {
 
-      alert(
-        "Ask StoryLens will become interactive when we connect the trusted cultural knowledge base and AI."
-      );
+      document.getElementById("questionInput").value = question;
+
+      askStoryLens();
+
+    }
+
+
+    function handleEnter(event) {
+
+      if (event.key === "Enter") {
+        askStoryLens();
+      }
+
+    }
+
+
+    function askStoryLens() {
+
+      const input =
+        document.getElementById("questionInput");
+
+      const question =
+        input.value.trim();
+
+      const response =
+        document.getElementById("aiResponse");
+
+      const displayQuestion =
+        document.getElementById("displayQuestion");
+
+      const answerText =
+        document.getElementById("answerText");
+
+
+      if (question === "") {
+        return;
+      }
+
+
+      displayQuestion.innerText =
+        "You asked: “" + question + "”";
+
+
+      const lowerQuestion =
+        question.toLowerCase();
+
+
+      /* Importance */
+
+      if (
+        lowerQuestion.includes("important") ||
+        lowerQuestion.includes("matter") ||
+        lowerQuestion.includes("significance")
+      ) {
+
+        answerText.innerHTML = `
+          Taichung Prefectural Hall is important because it
+          preserves a physical record of Taichung's development
+          as an administrative center in central Taiwan.
+
+          <br><br>
+
+          After the establishment of Taichung Prefecture in 1920,
+          the building became the center of a large administrative
+          region covering areas broadly corresponding to today's
+          Taichung, Changhua, and Nantou.
+
+          <br><br>
+
+          Its continued governmental use and later preservation
+          as a National Monument allow visitors to connect the
+          city's present-day landscape with more than a century
+          of urban and administrative history.
+        `;
+
+      }
+
+
+      /* Construction */
+
+      else if (
+        lowerQuestion.includes("when") ||
+        lowerQuestion.includes("built") ||
+        lowerQuestion.includes("construction") ||
+        lowerQuestion.includes("old")
+      ) {
+
+        answerText.innerHTML = `
+          Construction began in 1913, and the first phase was
+          completed in 1914.
+
+          <br><br>
+
+          The building was not completed all at once. It was
+          expanded through several stages, and by 1934 the complex
+          had reached its principal present-day scale.
+        `;
+
+      }
+
+
+      /* Architect */
+
+      else if (
+        lowerQuestion.includes("who") ||
+        lowerQuestion.includes("architect") ||
+        lowerQuestion.includes("designed")
+      ) {
+
+        answerText.innerHTML = `
+          Taichung Prefectural Hall was designed by
+          Moriyama Matsunosuke, an architect and engineer who
+          worked for the Government-General of Taiwan.
+
+          <br><br>
+
+          The building uses a distinctive corner-site composition,
+          with its main entrance facing the intersection and
+          wings extending from the central section.
+        `;
+
+      }
+
+
+      /* 1920 */
+
+      else if (
+        lowerQuestion.includes("1920") ||
+        lowerQuestion.includes("prefecture")
+      ) {
+
+        answerText.innerHTML = `
+          In 1920, Taiwan's local administrative system was
+          reorganized and Taichung Prefecture was established.
+
+          <br><br>
+
+          The former Taichung government office then became
+          Taichung Prefectural Hall. The prefecture covered areas
+          broadly corresponding to present-day Taichung City,
+          Changhua County, and Nantou County.
+        `;
+
+      }
+
+
+      /* Unknown */
+
+      else {
+
+        answerText.innerHTML = `
+          I don't have enough verified information in the current
+          StoryLens knowledge base to answer that question reliably.
+
+          <br><br>
+
+          Try asking about the building's construction,
+          historical importance, architect, or the establishment
+          of Taichung Prefecture in 1920.
+
+          <br><br>
+
+          <strong>
+            StoryLens would rather say “I don't know” than invent history.
+          </strong>
+        `;
+
+      }
+
+
+      response.classList.add("show");
+
+
+      response.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
 
     }
 
