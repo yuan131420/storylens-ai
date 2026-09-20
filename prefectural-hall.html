@@ -1294,24 +1294,7 @@ async function askStoryLens() {
       data.answer;
 
 
-const insufficientInformation =
-  data.answer.includes(
-    "I don't have enough verified information"
-  ) ||
-  data.answer.includes(
-    "沒有足夠的已驗證資訊"
-  ) ||
-  data.answer.includes(
-    "沒有足夠的可信資訊"
-  ) ||
-  data.answer.includes(
-    "現有資料不足"
-  ) ||
-  data.answer.includes(
-    "知識庫中沒有足夠"
-  );
-
-if (insufficientInformation) {
+if (data.status === "insufficient_evidence") {
 
   groundedBadge.innerText =
     currentLanguage === "zh"
@@ -1321,13 +1304,18 @@ if (insufficientInformation) {
   groundedBadge.style.display =
     "inline-block";
 
-} else if (data.grounded) {
+} else if (data.status === "answered" && data.grounded) {
 
   groundedBadge.innerText =
     text.grounded;
 
   groundedBadge.style.display =
     "inline-block";
+
+} else {
+
+  groundedBadge.style.display =
+    "none";
 
 }
 
