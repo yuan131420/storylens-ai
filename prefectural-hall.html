@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Taichung Prefectural Hall | StoryLens AI</title>
 
   <style>
@@ -24,8 +23,6 @@
       margin: auto;
       padding: 20px;
     }
-
-    /* Navigation */
 
     nav {
       display: flex;
@@ -48,8 +45,6 @@
       text-decoration: none;
       font-size: 14px;
     }
-
-    /* Hero */
 
     .hero {
       padding: 35px 0 38px;
@@ -81,8 +76,6 @@
       line-height: 1.7;
     }
 
-    /* General Sections */
-
     .section {
       margin-top: 38px;
     }
@@ -97,8 +90,6 @@
       margin-bottom: 20px;
       line-height: 1.6;
     }
-
-    /* Language */
 
     .language-buttons {
       display: flex;
@@ -118,8 +109,6 @@
       background: #123c3b;
       color: white;
     }
-
-    /* Experience Modes */
 
     .experience-grid {
       display: grid;
@@ -156,8 +145,6 @@
       font-size: 14px;
     }
 
-    /* Story Output */
-
     .story-box {
       margin-top: 30px;
       background: #e6f1ee;
@@ -186,8 +173,6 @@
       line-height: 1.8;
       color: #385653;
     }
-
-    /* Ask StoryLens */
 
     .ask-box {
       margin-top: 45px;
@@ -244,7 +229,10 @@
       background: #8bd3c7;
     }
 
-    /* Suggested Questions */
+    .question button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
 
     .suggested-title {
       margin-top: 18px;
@@ -272,8 +260,6 @@
     .suggested:hover {
       background: #204d49;
     }
-
-    /* AI Response */
 
     .ai-response {
       display: none;
@@ -305,6 +291,7 @@
     .answer {
       color: #48625f;
       line-height: 1.75;
+      white-space: pre-wrap;
     }
 
     .grounded-badge {
@@ -327,8 +314,6 @@
       line-height: 1.6;
     }
 
-    /* Responsible AI */
-
     .responsible-ai {
       margin-top: 22px;
       border: 1px solid #426762;
@@ -342,8 +327,6 @@
     .responsible-ai strong {
       color: white;
     }
-
-    /* Sources */
 
     .sources {
       margin: 30px 0;
@@ -378,10 +361,7 @@
       padding: 35px 0;
     }
 
-    /* Mobile */
-
     @media(max-width: 650px) {
-
       .experience-grid {
         grid-template-columns: 1fr;
       }
@@ -397,33 +377,17 @@
   </style>
 </head>
 
-
 <body>
 
   <div class="container">
 
-    <!-- NAVIGATION -->
-
     <nav>
-
-      <div class="logo">
-        StoryLens <span>AI</span>
-      </div>
-
-      <a class="back" href="index.html">
-        ← Back to Explore
-      </a>
-
+      <div class="logo">StoryLens <span>AI</span></div>
+      <a class="back" href="index.html">← Back to Explore</a>
     </nav>
 
-
-    <!-- HERO -->
-
     <section class="hero">
-
-      <div class="place-type">
-        TAICHUNG OLD TOWN · TAIWAN
-      </div>
+      <div class="place-type">TAICHUNG OLD TOWN · TAIWAN</div>
 
       <h1>
         Taichung<br>
@@ -439,14 +403,9 @@
         witnessed the transformation of Taichung into a modern city.
         Choose how you would like StoryLens to tell its story.
       </p>
-
     </section>
 
-
-    <!-- LANGUAGE -->
-
     <section class="section">
-
       <h2>Choose your language</h2>
 
       <p class="section-description">
@@ -454,21 +413,10 @@
       </p>
 
       <div class="language-buttons">
-
-        <button class="language active">
-          English
-        </button>
-
-        <button class="language">
-          中文
-        </button>
-
+        <button class="language active">English</button>
+        <button class="language">中文</button>
       </div>
-
     </section>
-
-
-    <!-- EXPERIENCE MODES -->
 
     <section class="section">
 
@@ -478,58 +426,34 @@
         One place can tell many different stories.
       </p>
 
-
       <div class="experience-grid">
 
         <div class="experience" onclick="showStory('quick')">
-
           <div class="icon">⚡</div>
-
           <h3>Quick Story</h3>
-
           <p>I only have a minute.</p>
-
         </div>
-
 
         <div class="experience" onclick="showStory('story')">
-
           <div class="icon">📖</div>
-
           <h3>Story Mode</h3>
-
           <p>Take me into the story.</p>
-
         </div>
-
 
         <div class="experience" onclick="showStory('deep')">
-
           <div class="icon">🏛️</div>
-
           <h3>Deep Dive</h3>
-
           <p>Give me the historical context.</p>
-
         </div>
 
-
         <div class="experience" onclick="showStory('simple')">
-
           <div class="icon">🌱</div>
-
           <h3>Simple Mode</h3>
-
           <p>Explain it in an easy way.</p>
-
         </div>
 
       </div>
-
     </section>
-
-
-    <!-- STORY OUTPUT -->
 
     <section id="storyBox" class="story-box">
 
@@ -537,17 +461,11 @@
         STORYLENS EXPERIENCE
       </div>
 
-      <h2 id="storyTitle">
-        Your story
-      </h2>
+      <h2 id="storyTitle">Your story</h2>
 
-      <div id="storyText" class="story-text">
-      </div>
+      <div id="storyText" class="story-text"></div>
 
     </section>
-
-
-    <!-- ASK STORYLENS -->
 
     <section class="ask-box">
 
@@ -559,10 +477,8 @@
 
       <p class="ask-intro">
         Curious about this place? Ask StoryLens a question.
-        Answers are designed to be grounded in trusted cultural
-        and historical sources.
+        Answers are generated from a trusted cultural knowledge base.
       </p>
-
 
       <div class="question">
 
@@ -573,14 +489,14 @@
           onkeydown="handleEnter(event)"
         >
 
-        <button onclick="askStoryLens()">
+        <button
+          id="askButton"
+          onclick="askStoryLens()"
+        >
           Ask →
         </button>
 
       </div>
-
-
-      <!-- Suggested Questions -->
 
       <div class="suggested-title">
         TRY ASKING
@@ -590,26 +506,26 @@
 
         <button
           class="suggested"
-          onclick="askSuggested('Why is this building important?')">
+          onclick="askSuggested('Why is this building important?')"
+        >
           Why is this building important?
         </button>
 
         <button
           class="suggested"
-          onclick="askSuggested('When was it built?')">
+          onclick="askSuggested('When was it built?')"
+        >
           When was it built?
         </button>
 
         <button
           class="suggested"
-          onclick="askSuggested('Who designed this building?')">
+          onclick="askSuggested('Who designed this building?')"
+        >
           Who designed it?
         </button>
 
       </div>
-
-
-      <!-- AI Response -->
 
       <div id="aiResponse" class="ai-response">
 
@@ -619,42 +535,42 @@
 
         <div
           id="displayQuestion"
-          class="user-question">
-        </div>
+          class="user-question"
+        ></div>
 
         <div
           id="answerText"
-          class="answer">
+          class="answer"
+        ></div>
+
+        <div
+          id="groundedBadge"
+          class="grounded-badge"
+        >
+          ✓ Grounded in trusted cultural sources
         </div>
 
-        <div class="grounded-badge">
-          ✓ Based on trusted sources
-        </div>
-
-        <div class="response-sources">
-          Sources: Taichung City Government Cultural Affairs Bureau
-          · Cultural Heritage Department of Taichung City
+        <div
+          id="responseSources"
+          class="response-sources"
+        >
+          Sources: Taichung City Government Cultural Affairs Bureau ·
+          Cultural Heritage Department of Taichung City
         </div>
 
       </div>
-
-
-      <!-- Responsible AI -->
 
       <div class="responsible-ai">
 
         <strong>Responsible AI:</strong>
 
-        StoryLens is designed to retrieve trusted cultural knowledge
-        before generating an answer. When reliable information is
-        unavailable, it should say so rather than invent historical facts.
+        StoryLens retrieves trusted cultural knowledge before
+        generating an answer. When reliable information is unavailable,
+        it is designed to say so rather than invent historical facts.
 
       </div>
 
     </section>
-
-
-    <!-- TRUSTED SOURCES -->
 
     <section class="sources">
 
@@ -662,48 +578,34 @@
 
       <p>
         StoryLens uses verified cultural and historical information
-        instead of generating historical facts from imagination.
+        instead of asking AI to generate historical facts from imagination.
       </p>
 
-
       <div class="source-item">
-
         <p>
           <span class="source-number">01 ·</span>
-          <strong>
-            Taichung City Government Cultural Affairs Bureau
-          </strong>
+          <strong>Taichung City Government Cultural Affairs Bureau</strong>
           <br>
           History of Taichung Prefectural Hall
         </p>
-
       </div>
 
-
       <div class="source-item">
-
         <p>
           <span class="source-number">02 ·</span>
-          <strong>
-            Cultural Heritage Department of Taichung City
-          </strong>
+          <strong>Cultural Heritage Department of Taichung City</strong>
           <br>
           National Monument Record: Taichung Prefectural Hall
         </p>
-
       </div>
 
-
       <div class="source-item">
-
         <p style="font-size: 12px;">
           Knowledge Base updated: September 2026
         </p>
-
       </div>
 
     </section>
-
 
     <footer>
       StoryLens AI · ICIC 2026 Prototype
@@ -711,23 +613,23 @@
 
   </div>
 
-
   <script>
 
-    /* =========================================
-       STORY MODES
-       ========================================= */
+    const STORYLENS_API =
+      "https://storylens-ai.410222st.workers.dev/";
 
     function showStory(mode) {
 
-      const box = document.getElementById("storyBox");
-      const title = document.getElementById("storyTitle");
-      const text = document.getElementById("storyText");
+      const box =
+        document.getElementById("storyBox");
+
+      const title =
+        document.getElementById("storyTitle");
+
+      const text =
+        document.getElementById("storyText");
 
       box.classList.add("show");
-
-
-      /* QUICK STORY */
 
       if (mode === "quick") {
 
@@ -739,28 +641,24 @@
             when construction started on a new government office
             for Taichung.
           </p>
-
           <br>
 
           <p>
-            After Taiwan's local administrative system was reorganized
-            in 1920, the building became the seat of Taichung Prefecture,
-            which governed an area covering much of today's Taichung,
-            Changhua, and Nantou.
+            After Taiwan's local administrative system was
+            reorganized in 1920, the building became the seat
+            of Taichung Prefecture, which governed an area covering
+            much of today's Taichung, Changhua, and Nantou.
           </p>
-
           <br>
 
           <p>
-            Expanded in several stages until 1934, the building witnessed
-            Taichung's growth as an important administrative center in
-            central Taiwan. Today, it is preserved as a National Monument.
+            Expanded in several stages until 1934, the building
+            witnessed Taichung's growth as an important administrative
+            center in central Taiwan. Today, it is preserved as
+            a National Monument.
           </p>
         `;
       }
-
-
-      /* STORY MODE */
 
       if (mode === "story") {
 
@@ -769,47 +667,41 @@
         text.innerHTML = `
           <p>
             Imagine standing on this street more than a century ago.
-            Taichung was changing rapidly, and a new government building
-            was beginning to rise at this very corner.
+            Taichung was changing rapidly, and a new government
+            building was beginning to rise at this very corner.
           </p>
-
           <br>
 
           <p>
-            Construction began in 1913. But the building you see today
-            did not appear all at once. As the city developed, the complex
-            continued to grow through several stages of expansion.
+            Construction began in 1913. But the building you see
+            today did not appear all at once. As the city developed,
+            the complex continued to grow through several stages
+            of expansion.
           </p>
-
           <br>
 
           <p>
-            Then came 1920. Taiwan's local administrative system was
-            reorganized, and Taichung became the center of the newly
-            established Taichung Prefecture. The former government office
-            became Taichung Prefectural Hall.
+            Then came 1920. Taiwan's local administrative system
+            was reorganized, and Taichung became the center of the
+            newly established Taichung Prefecture. The former
+            government office became Taichung Prefectural Hall.
           </p>
-
           <br>
 
           <p>
-            Government offices gathered around the city, people arrived,
-            and Taichung strengthened its role as a political, economic,
-            and cultural center of central Taiwan.
+            Government offices gathered around the city, people
+            arrived, and Taichung strengthened its role as a political,
+            economic, and cultural center of central Taiwan.
           </p>
-
           <br>
 
           <p>
-            By 1934, the building had largely reached the form we recognize
-            today. More than a century later, its walls still tell a story
-            of how the city around them changed.
+            By 1934, the building had largely reached the form
+            we recognize today. More than a century later, its walls
+            still tell a story of how the city around them changed.
           </p>
         `;
       }
-
-
-      /* DEEP DIVE */
 
       if (mode === "deep") {
 
@@ -817,55 +709,47 @@
 
         text.innerHTML = `
           <p>
-            The main construction of what is now Taichung Prefectural Hall
-            began in 1913 as the office of the Taichung Chō administration.
-            Its first phase was completed in 1914, followed by several
-            stages of expansion. By 1934, the complex had reached its
-            principal present-day scale.
+            The main construction of what is now Taichung Prefectural
+            Hall began in 1913 as the office of the Taichung Chō
+            administration. Its first phase was completed in 1914,
+            followed by several stages of expansion. By 1934,
+            the complex had reached its principal present-day scale.
           </p>
-
           <br>
 
           <p>
-            A major turning point came in 1920, when the Japanese colonial
-            government reorganized Taiwan's local administrative divisions.
-            Taichung Prefecture was established, covering areas corresponding
-            broadly to present-day Taichung City, Changhua County, and
-            Nantou County.
+            A major turning point came in 1920, when the Japanese
+            colonial government reorganized Taiwan's local
+            administrative divisions. Taichung Prefecture was
+            established, covering areas corresponding broadly to
+            present-day Taichung City, Changhua County, and Nantou County.
           </p>
-
           <br>
 
           <p>
-            As the prefectural capital, Taichung attracted administrative
-            institutions and population, strengthening its position as a
-            political, economic, and cultural center in central Taiwan.
+            As the prefectural capital, Taichung attracted
+            administrative institutions and population, strengthening
+            its position as a political, economic, and cultural center
+            in central Taiwan.
           </p>
-
           <br>
 
           <p>
-            The building was designed by Moriyama Matsunosuke, an architect
-            and engineer who worked for the Government-General of Taiwan.
-            Its corner-site composition places the main entrance at the
-            intersection, while two wings extend backward from the central
-            section. Its architecture reflects Western historicist and
-            neoclassical influences used in government buildings of the period.
+            The building was designed by Moriyama Matsunosuke,
+            an architect and engineer who worked for the
+            Government-General of Taiwan. Its corner-site composition
+            places the main entrance at the intersection, while two
+            wings extend backward from the central section.
           </p>
-
           <br>
 
           <p>
-            After World War II, the building continued to serve governmental
-            functions as offices of the Taichung City Government. It was
-            later designated a National Monument, preserving an important
-            physical record of Taichung's administrative and urban history.
+            After World War II, the building continued to serve
+            governmental functions as offices of the Taichung City
+            Government. It was later designated a National Monument.
           </p>
         `;
       }
-
-
-      /* SIMPLE MODE */
 
       if (mode === "simple") {
 
@@ -875,51 +759,43 @@
           <p>
             This building is more than 100 years old.
           </p>
-
           <br>
 
           <p>
-            Construction began in 1913. At first, it was used as a local
-            government office. In 1920, Taichung became the center of a
-            much larger administrative region called Taichung Prefecture,
-            and this building became its main government office.
+            Construction began in 1913. At first, it was used as
+            a local government office. In 1920, Taichung became the
+            center of a much larger administrative region called
+            Taichung Prefecture.
           </p>
-
           <br>
 
           <p>
             The building was expanded several times as the city grew.
             By 1934, it looked much closer to the building we see today.
           </p>
-
           <br>
 
           <p>
-            That is why Taichung Prefectural Hall matters: it helps us see
-            how Taichung changed and developed over more than a century.
+            That is why Taichung Prefectural Hall matters:
+            it helps us see how Taichung changed and developed
+            over more than a century.
           </p>
         `;
       }
-
 
       box.scrollIntoView({
         behavior: "smooth",
         block: "center"
       });
-
     }
 
 
-    /* =========================================
-       ASK STORYLENS DEMO
-       ========================================= */
-
     function askSuggested(question) {
 
-      document.getElementById("questionInput").value = question;
+      document.getElementById("questionInput").value =
+        question;
 
       askStoryLens();
-
     }
 
 
@@ -928,19 +804,18 @@
       if (event.key === "Enter") {
         askStoryLens();
       }
-
     }
 
 
-    function askStoryLens() {
+    async function askStoryLens() {
 
       const input =
         document.getElementById("questionInput");
 
-      const question =
-        input.value.trim();
+      const button =
+        document.getElementById("askButton");
 
-      const response =
+      const responseBox =
         document.getElementById("aiResponse");
 
       const displayQuestion =
@@ -949,151 +824,137 @@
       const answerText =
         document.getElementById("answerText");
 
+      const groundedBadge =
+        document.getElementById("groundedBadge");
 
-      if (question === "") {
+      const responseSources =
+        document.getElementById("responseSources");
+
+      const question =
+        input.value.trim();
+
+
+      if (!question) {
         return;
       }
 
 
       displayQuestion.innerText =
-        "You asked: “" + question + "”";
+        `You asked: “${question}”`;
+
+      answerText.innerText =
+        "StoryLens is consulting the trusted cultural knowledge base...";
+
+      groundedBadge.style.display =
+        "none";
+
+      responseSources.style.display =
+        "none";
+
+      responseBox.classList.add("show");
+
+      button.disabled = true;
+
+      button.innerText =
+        "Thinking...";
 
 
-      const lowerQuestion =
-        question.toLowerCase();
+      try {
+
+        const response =
+          await fetch(STORYLENS_API, {
+
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+              question: question
+            })
+
+          });
 
 
-      /* Importance */
-
-      if (
-        lowerQuestion.includes("important") ||
-        lowerQuestion.includes("matter") ||
-        lowerQuestion.includes("significance")
-      ) {
-
-        answerText.innerHTML = `
-          Taichung Prefectural Hall is important because it
-          preserves a physical record of Taichung's development
-          as an administrative center in central Taiwan.
-
-          <br><br>
-
-          After the establishment of Taichung Prefecture in 1920,
-          the building became the center of a large administrative
-          region covering areas broadly corresponding to today's
-          Taichung, Changhua, and Nantou.
-
-          <br><br>
-
-          Its continued governmental use and later preservation
-          as a National Monument allow visitors to connect the
-          city's present-day landscape with more than a century
-          of urban and administrative history.
-        `;
-
-      }
+        const data =
+          await response.json();
 
 
-      /* Construction */
+        if (!response.ok) {
 
-      else if (
-        lowerQuestion.includes("when") ||
-        lowerQuestion.includes("built") ||
-        lowerQuestion.includes("construction") ||
-        lowerQuestion.includes("old")
-      ) {
+          throw new Error(
+            data.error ||
+            "StoryLens could not answer this question."
+          );
 
-        answerText.innerHTML = `
-          Construction began in 1913, and the first phase was
-          completed in 1914.
-
-          <br><br>
-
-          The building was not completed all at once. It was
-          expanded through several stages, and by 1934 the complex
-          had reached its principal present-day scale.
-        `;
-
-      }
+        }
 
 
-      /* Architect */
+        if (!data.answer) {
 
-      else if (
-        lowerQuestion.includes("who") ||
-        lowerQuestion.includes("architect") ||
-        lowerQuestion.includes("designed")
-      ) {
+          throw new Error(
+            "StoryLens returned an empty answer."
+          );
 
-        answerText.innerHTML = `
-          Taichung Prefectural Hall was designed by
-          Moriyama Matsunosuke, an architect and engineer who
-          worked for the Government-General of Taiwan.
-
-          <br><br>
-
-          The building uses a distinctive corner-site composition,
-          with its main entrance facing the intersection and
-          wings extending from the central section.
-        `;
-
-      }
+        }
 
 
-      /* 1920 */
+        answerText.innerText =
+          data.answer;
 
-      else if (
-        lowerQuestion.includes("1920") ||
-        lowerQuestion.includes("prefecture")
-      ) {
 
-        answerText.innerHTML = `
-          In 1920, Taiwan's local administrative system was
-          reorganized and Taichung Prefecture was established.
+        if (data.grounded) {
 
-          <br><br>
+          groundedBadge.style.display =
+            "inline-block";
 
-          The former Taichung government office then became
-          Taichung Prefectural Hall. The prefecture covered areas
-          broadly corresponding to present-day Taichung City,
-          Changhua County, and Nantou County.
-        `;
+        }
+
+
+        if (
+          data.sources &&
+          data.sources.length > 0
+        ) {
+
+          responseSources.innerText =
+            "Sources: " +
+            data.sources.join(" · ");
+
+          responseSources.style.display =
+            "block";
+
+        }
 
       }
 
+      catch (error) {
 
-      /* Unknown */
+        console.error(
+          "StoryLens error:",
+          error
+        );
 
-      else {
+        answerText.innerText =
+          "StoryLens couldn't reach the AI cultural guide right now. Please try again in a moment.";
 
-        answerText.innerHTML = `
-          I don't have enough verified information in the current
-          StoryLens knowledge base to answer that question reliably.
+        groundedBadge.style.display =
+          "none";
 
-          <br><br>
-
-          Try asking about the building's construction,
-          historical importance, architect, or the establishment
-          of Taichung Prefecture in 1920.
-
-          <br><br>
-
-          <strong>
-            StoryLens would rather say “I don't know” than invent history.
-          </strong>
-        `;
+        responseSources.style.display =
+          "none";
 
       }
 
+      finally {
 
-      response.classList.add("show");
+        button.disabled =
+          false;
 
+        button.innerText =
+          "Ask →";
 
-      response.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-      });
-
+      }
     }
 
   </script>
