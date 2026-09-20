@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Taichung Prefectural Hall | StoryLens AI</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f7f4ec;
+  color:#123c3b;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+/* NAV */
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0 28px;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#45a99d;
+}
+
+.back{
+  color:#496966;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+  padding:35px 0 38px;
+}
+
+.place-type{
+  color:#2a8d82;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:2px;
+  margin-bottom:14px;
+}
+
+h1{
+  font-size:clamp(38px,8vw,62px);
+  line-height:1.05;
+  margin-bottom:16px;
+}
+
+.subtitle{
+  color:#2a8d82;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.intro{
+  max-width:650px;
+  color:#5d716f;
+  line-height:1.7;
+}
+
+/* LANGUAGE */
+
+.section{
+  margin-top:38px;
+}
+
+.section h2{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.section-description{
+  color:#70817f;
+  margin-bottom:20px;
+}
+
+.language-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.language{
+  padding:11px 18px;
+  border-radius:30px;
+  border:1px solid #bdd8d3;
+  background:white;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.language.active{
+  background:#123c3b;
+  color:white;
+}
+
+/* EXPERIENCE */
+
+.experience-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.experience{
+  background:white;
+  border:1px solid #e0e9e6;
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.experience:hover{
+  transform:translateY(-3px);
+  border-color:#7cc0b6;
+  box-shadow:0 8px 20px rgba(20,70,65,.08);
+}
+
+.experience .icon{
+  font-size:27px;
+  margin-bottom:14px;
+}
+
+.experience h3{
+  margin-bottom:6px;
+}
+
+.experience p{
+  color:#70817f;
+  font-size:14px;
+}
+
+/* STORY OUTPUT */
+
+.story-box{
+  margin-top:30px;
+  background:#e6f1ee;
+  border-radius:20px;
+  padding:28px;
+  display:none;
+}
+
+.story-box.show{
+  display:block;
+}
+
+.story-label{
+  color:#2a8d82;
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.story-box h2{
+  margin-bottom:15px;
+}
+
+.story-text{
+  line-height:1.8;
+  color:#385653;
+}
+
+/* AI */
+
+.ask-box{
+  margin-top:45px;
+  background:#123c3b;
+  color:white;
+  border-radius:22px;
+  padding:28px;
+}
+
+.ask-box h2{
+  margin-bottom:8px;
+}
+
+.ask-box p{
+  color:#c8dcd8;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.question{
+  display:flex;
+  gap:8px;
+}
+
+.question input{
+  flex:1;
+  border:none;
+  border-radius:12px;
+  padding:14px;
+  font-size:15px;
+}
+
+.question button{
+  border:none;
+  border-radius:12px;
+  padding:14px 18px;
+  background:#74c4b7;
+  color:#103b38;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* SOURCES */
+
+.sources{
+  margin:30px 0;
+  padding:22px;
+  border:1px solid #d9e5e1;
+  border-radius:18px;
+}
+
+.sources h3{
+  margin-bottom:12px;
+}
+
+.sources p{
+  color:#70817f;
+  font-size:14px;
+  line-height:1.6;
+}
+
+footer{
+  text-align:center;
+  color:#899895;
+  font-size:12px;
+  padding:35px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+  .experience-grid{
+    grid-template-columns:1fr;
+  }
+
+  .question{
+    flex-direction:column;
+  }
+
+  .question button{
+    width:100%;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<nav>
+
+  <div class="logo">
+    StoryLens <span>AI</span>
+  </div>
+
+  <a class="back" href="index.html">
+    ← Back to Explore
+  </a>
+
+</nav>
+
+
+<section class="hero">
+
+  <div class="place-type">
+    TAICHUNG OLD TOWN · TAIWAN
+  </div>
+
+  <h1>
+    Taichung<br>
+    Prefectural Hall
+  </h1>
+
+  <div class="subtitle">
+    Governance · Architecture · Urban Development
+  </div>
+
+  <p class="intro">
+    More than a historic building, Taichung Prefectural Hall
+    witnessed the transformation of Taichung into a modern city.
+    Choose how you would like StoryLens to tell its story.
+  </p>
+
+</section>
+
+
+<section class="section">
+
+  <h2>Choose your language</h2>
+
+  <p class="section-description">
+    Experience local history in the language that feels most natural to you.
+  </p>
+
+  <div class="language-buttons">
+
+    <button class="language active">
+      English
+    </button>
+
+    <button class="language">
+      中文
+    </button>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <h2>How would you like to explore?</h2>
+
+  <p class="section-description">
+    One place can tell many different stories.
+  </p>
+
+
+  <div class="experience-grid">
+
+    <div class="experience" onclick="showStory('quick')">
+
+      <div class="icon">⚡</div>
+
+      <h3>Quick Story</h3>
+
+      <p>I only have a minute.</p>
+
+    </div>
+
+
+    <div class="experience" onclick="showStory('story')">
+
+      <div class="icon">📖</div>
+
+      <h3>Story Mode</h3>
+
+      <p>Take me into the story.</p>
+
+    </div>
+
+
+    <div class="experience" onclick="showStory('deep')">
+
+      <div class="icon">🏛️</div>
+
+      <h3>Deep Dive</h3>
+
+      <p>Give me the historical context.</p>
+
+    </div>
+
+
+    <div class="experience" onclick="showStory('simple')">
+
+      <div class="icon">🌱</div>
+
+      <h3>Simple Mode</h3>
+
+      <p>Explain it in an easy way.</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="storyBox" class="story-box">
+
+  <div class="story-label">
+    STORYLENS EXPERIENCE
+  </div>
+
+  <h2 id="storyTitle">
+    Your story
+  </h2>
+
+  <div id="storyText" class="story-text"></div>
+
+</section>
+
+
+<section class="ask-box">
+
+  <h2>Ask StoryLens</h2>
+
+  <p>
+    Curious about this place?
+    Ask a question and explore its story further.
+  </p>
+
+  <div class="question">
+
+    <input
+      type="text"
+      placeholder="Why is this place important?"
+    >
+
+    <button onclick="demoAI()">
+      Ask →
+    </button>
+
+  </div>
+
+</section>
+
+
+<section class="sources">
+
+  <h3>✓ Trusted Sources</h3>
+
+  <p>
+    StoryLens is designed to generate stories from verified
+    cultural and historical sources. Source information for this
+    prototype will be added to the knowledge base.
+  </p>
+
+</section>
+
+
+<footer>
+  StoryLens AI · ICIC 2026 Prototype
+</footer>
+
+</div>
+
+
+<script>
+
+function showStory(mode){
+
+  const box = document.getElementById("storyBox");
+  const title = document.getElementById("storyTitle");
+  const text = document.getElementById("storyText");
+
+  box.classList.add("show");
+
+  if(mode === "quick"){
+    title.innerText = "Quick Story";
+
+    text.innerHTML =
+    "You are standing in front of one of Taichung's historic civic buildings. StoryLens will soon use verified local sources to give you a one-minute introduction to the history and significance of this place.";
+  }
+
+  if(mode === "story"){
+    title.innerText = "Story Mode";
+
+    text.innerHTML =
+    "Imagine standing here decades ago, as Taichung was changing around you. StoryLens will transform verified historical information into an immersive narrative while keeping the facts connected to their original sources.";
+  }
+
+  if(mode === "deep"){
+    title.innerText = "Deep Dive";
+
+    text.innerHTML =
+    "Deep Dive will provide additional historical context, including the development of the city, the role of the building, architectural information, and its relationship with the surrounding urban landscape.";
+  }
+
+  if(mode === "simple"){
+    title.innerText = "Simple Mode";
+
+    text.innerHTML =
+    "This mode will explain the history of the site using clear and accessible language, making local culture easier to understand for visitors who may be unfamiliar with Taiwanese history.";
+  }
+
+  box.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+
+}
+
+
+function demoAI(){
+
+  alert(
+    "Ask StoryLens will become interactive when we connect the trusted cultural knowledge base and AI."
+  );
+
+}
+
+</script>
+
+</body>
+</html>
