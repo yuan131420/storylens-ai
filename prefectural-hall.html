@@ -13,7 +13,7 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
       background: #f7f4ec;
       color: #123c3b;
     }
@@ -379,585 +379,983 @@
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <nav>
-      <div class="logo">StoryLens <span>AI</span></div>
-      <a class="back" href="index.html">← Back to Explore</a>
-    </nav>
+  <nav>
+    <div class="logo">StoryLens <span>AI</span></div>
+    <a id="backLink" class="back" href="index.html">← Back to Explore</a>
+  </nav>
 
-    <section class="hero">
-      <div class="place-type">TAICHUNG OLD TOWN · TAIWAN</div>
+  <section class="hero">
+    <div id="placeType" class="place-type">
+      TAICHUNG OLD TOWN · TAIWAN
+    </div>
 
-      <h1>
-        Taichung<br>
-        Prefectural Hall
-      </h1>
+    <h1 id="placeName">
+      Taichung<br>Prefectural Hall
+    </h1>
 
-      <div class="subtitle">
-        Governance · Architecture · Urban Development
+    <div id="subtitle" class="subtitle">
+      Governance · Architecture · Urban Development
+    </div>
+
+    <p id="intro" class="intro">
+      More than a historic building, Taichung Prefectural Hall
+      witnessed the transformation of Taichung into a modern city.
+      Choose how you would like StoryLens to tell its story.
+    </p>
+  </section>
+
+  <section class="section">
+
+    <h2 id="languageTitle">
+      Choose your language
+    </h2>
+
+    <p id="languageDescription" class="section-description">
+      Experience local history in the language that feels most natural to you.
+    </p>
+
+    <div class="language-buttons">
+
+      <button
+        id="englishButton"
+        class="language active"
+        onclick="setLanguage('en')"
+      >
+        English
+      </button>
+
+      <button
+        id="chineseButton"
+        class="language"
+        onclick="setLanguage('zh')"
+      >
+        中文
+      </button>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2 id="exploreTitle">
+      How would you like to explore?
+    </h2>
+
+    <p id="exploreDescription" class="section-description">
+      One place can tell many different stories.
+    </p>
+
+    <div class="experience-grid">
+
+      <div class="experience" onclick="showStory('quick')">
+        <div class="icon">⚡</div>
+        <h3 id="quickTitle">Quick Story</h3>
+        <p id="quickDescription">I only have a minute.</p>
       </div>
 
-      <p class="intro">
-        More than a historic building, Taichung Prefectural Hall
-        witnessed the transformation of Taichung into a modern city.
-        Choose how you would like StoryLens to tell its story.
-      </p>
-    </section>
-
-    <section class="section">
-      <h2>Choose your language</h2>
-
-      <p class="section-description">
-        Experience local history in the language that feels most natural to you.
-      </p>
-
-      <div class="language-buttons">
-        <button class="language active">English</button>
-        <button class="language">中文</button>
-      </div>
-    </section>
-
-    <section class="section">
-
-      <h2>How would you like to explore?</h2>
-
-      <p class="section-description">
-        One place can tell many different stories.
-      </p>
-
-      <div class="experience-grid">
-
-        <div class="experience" onclick="showStory('quick')">
-          <div class="icon">⚡</div>
-          <h3>Quick Story</h3>
-          <p>I only have a minute.</p>
-        </div>
-
-        <div class="experience" onclick="showStory('story')">
-          <div class="icon">📖</div>
-          <h3>Story Mode</h3>
-          <p>Take me into the story.</p>
-        </div>
-
-        <div class="experience" onclick="showStory('deep')">
-          <div class="icon">🏛️</div>
-          <h3>Deep Dive</h3>
-          <p>Give me the historical context.</p>
-        </div>
-
-        <div class="experience" onclick="showStory('simple')">
-          <div class="icon">🌱</div>
-          <h3>Simple Mode</h3>
-          <p>Explain it in an easy way.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="storyBox" class="story-box">
-
-      <div class="story-label">
-        STORYLENS EXPERIENCE
+      <div class="experience" onclick="showStory('story')">
+        <div class="icon">📖</div>
+        <h3 id="storyModeTitle">Story Mode</h3>
+        <p id="storyModeDescription">Take me into the story.</p>
       </div>
 
-      <h2 id="storyTitle">Your story</h2>
-
-      <div id="storyText" class="story-text"></div>
-
-    </section>
-
-    <section class="ask-box">
-
-      <div class="ask-label">
-        AI CULTURAL GUIDE
+      <div class="experience" onclick="showStory('deep')">
+        <div class="icon">🏛️</div>
+        <h3 id="deepTitle">Deep Dive</h3>
+        <p id="deepDescription">Give me the historical context.</p>
       </div>
 
-      <h2>Ask StoryLens</h2>
-
-      <p class="ask-intro">
-        Curious about this place? Ask StoryLens a question.
-        Answers are generated from a trusted cultural knowledge base.
-      </p>
-
-      <div class="question">
-
-        <input
-          id="questionInput"
-          type="text"
-          placeholder="Why is this place important?"
-          onkeydown="handleEnter(event)"
-        >
-
-        <button
-          id="askButton"
-          onclick="askStoryLens()"
-        >
-          Ask →
-        </button>
-
+      <div class="experience" onclick="showStory('simple')">
+        <div class="icon">🌱</div>
+        <h3 id="simpleTitle">Simple Mode</h3>
+        <p id="simpleDescription">Explain it in an easy way.</p>
       </div>
 
-      <div class="suggested-title">
-        TRY ASKING
+    </div>
+
+  </section>
+
+  <section id="storyBox" class="story-box">
+
+    <div id="storyLabel" class="story-label">
+      STORYLENS EXPERIENCE
+    </div>
+
+    <h2 id="storyTitle">Your story</h2>
+
+    <div id="storyText" class="story-text"></div>
+
+  </section>
+
+  <section class="ask-box">
+
+    <div id="askLabel" class="ask-label">
+      AI CULTURAL GUIDE
+    </div>
+
+    <h2 id="askTitle">
+      Ask StoryLens
+    </h2>
+
+    <p id="askIntro" class="ask-intro">
+      Curious about this place? Ask StoryLens a question.
+      Answers are generated from a trusted cultural knowledge base.
+    </p>
+
+    <div class="question">
+
+      <input
+        id="questionInput"
+        type="text"
+        placeholder="Why is this place important?"
+        onkeydown="handleEnter(event)"
+      >
+
+      <button
+        id="askButton"
+        onclick="askStoryLens()"
+      >
+        Ask →
+      </button>
+
+    </div>
+
+    <div id="suggestedTitle" class="suggested-title">
+      TRY ASKING
+    </div>
+
+    <div class="suggested-questions">
+
+      <button
+        id="suggestion1"
+        class="suggested"
+        onclick="askSuggested(1)"
+      >
+        Why is this building important?
+      </button>
+
+      <button
+        id="suggestion2"
+        class="suggested"
+        onclick="askSuggested(2)"
+      >
+        When was it built?
+      </button>
+
+      <button
+        id="suggestion3"
+        class="suggested"
+        onclick="askSuggested(3)"
+      >
+        Who designed it?
+      </button>
+
+    </div>
+
+    <div id="aiResponse" class="ai-response">
+
+      <div id="responseLabel" class="response-label">
+        STORYLENS ANSWER
       </div>
 
-      <div class="suggested-questions">
+      <div
+        id="displayQuestion"
+        class="user-question"
+      ></div>
 
-        <button
-          class="suggested"
-          onclick="askSuggested('Why is this building important?')"
-        >
-          Why is this building important?
-        </button>
+      <div
+        id="answerText"
+        class="answer"
+      ></div>
 
-        <button
-          class="suggested"
-          onclick="askSuggested('When was it built?')"
-        >
-          When was it built?
-        </button>
-
-        <button
-          class="suggested"
-          onclick="askSuggested('Who designed this building?')"
-        >
-          Who designed it?
-        </button>
-
+      <div
+        id="groundedBadge"
+        class="grounded-badge"
+      >
+        ✓ Grounded in trusted cultural sources
       </div>
 
-      <div id="aiResponse" class="ai-response">
+      <div
+        id="responseSources"
+        class="response-sources"
+      ></div>
 
-        <div class="response-label">
-          STORYLENS ANSWER
-        </div>
+    </div>
 
-        <div
-          id="displayQuestion"
-          class="user-question"
-        ></div>
+    <div id="responsibleAI" class="responsible-ai">
+      <strong>Responsible AI:</strong>
+      StoryLens retrieves trusted cultural knowledge before generating
+      an answer. When reliable information is unavailable, it is designed
+      to say so rather than invent historical facts.
+    </div>
 
-        <div
-          id="answerText"
-          class="answer"
-        ></div>
+  </section>
 
-        <div
-          id="groundedBadge"
-          class="grounded-badge"
-        >
-          ✓ Grounded in trusted cultural sources
-        </div>
+  <section class="sources">
 
-        <div
-          id="responseSources"
-          class="response-sources"
-        >
-          Sources: Taichung City Government Cultural Affairs Bureau ·
-          Cultural Heritage Department of Taichung City
-        </div>
+    <h3 id="sourcesTitle">
+      ✓ Trusted Sources
+    </h3>
 
-      </div>
+    <p id="sourcesIntro">
+      StoryLens uses verified cultural and historical information
+      instead of asking AI to generate historical facts from imagination.
+    </p>
 
-      <div class="responsible-ai">
-
-        <strong>Responsible AI:</strong>
-
-        StoryLens retrieves trusted cultural knowledge before
-        generating an answer. When reliable information is unavailable,
-        it is designed to say so rather than invent historical facts.
-
-      </div>
-
-    </section>
-
-    <section class="sources">
-
-      <h3>✓ Trusted Sources</h3>
-
+    <div class="source-item">
       <p>
-        StoryLens uses verified cultural and historical information
-        instead of asking AI to generate historical facts from imagination.
-      </p>
-
-      <div class="source-item">
-        <p>
-          <span class="source-number">01 ·</span>
-          <strong>Taichung City Government Cultural Affairs Bureau</strong>
-          <br>
+        <span class="source-number">01 ·</span>
+        <strong>Taichung City Government Cultural Affairs Bureau</strong>
+        <br>
+        <span id="source1Description">
           History of Taichung Prefectural Hall
-        </p>
-      </div>
+        </span>
+      </p>
+    </div>
 
-      <div class="source-item">
-        <p>
-          <span class="source-number">02 ·</span>
-          <strong>Cultural Heritage Department of Taichung City</strong>
-          <br>
+    <div class="source-item">
+      <p>
+        <span class="source-number">02 ·</span>
+        <strong>Cultural Heritage Department of Taichung City</strong>
+        <br>
+        <span id="source2Description">
           National Monument Record: Taichung Prefectural Hall
-        </p>
-      </div>
+        </span>
+      </p>
+    </div>
 
-      <div class="source-item">
-        <p style="font-size: 12px;">
-          Knowledge Base updated: September 2026
-        </p>
-      </div>
+    <div class="source-item">
+      <p id="knowledgeUpdate" style="font-size: 12px;">
+        Knowledge Base updated: September 2026
+      </p>
+    </div>
 
-    </section>
+  </section>
 
-    <footer>
-      StoryLens AI · ICIC 2026 Prototype
-    </footer>
+  <footer>
+    StoryLens AI · ICIC 2026 Prototype
+  </footer>
 
-  </div>
+</div>
 
-  <script>
 
-    const STORYLENS_API =
-      "https://storylens-ai.410222st.workers.dev/";
+<script>
 
-    function showStory(mode) {
+const STORYLENS_API =
+  "https://storylens-ai.410222st.workers.dev/";
 
-      const box =
-        document.getElementById("storyBox");
+let currentLanguage = "en";
 
-      const title =
-        document.getElementById("storyTitle");
+let currentStoryMode = null;
 
-      const text =
-        document.getElementById("storyText");
 
-      box.classList.add("show");
+const uiText = {
 
-      if (mode === "quick") {
+  en: {
 
-        title.innerText = "Quick Story";
+    back: "← Back to Explore",
 
-        text.innerHTML = `
-          <p>
-            Taichung Prefectural Hall began its story in 1913,
-            when construction started on a new government office
-            for Taichung.
-          </p>
-          <br>
+    placeType:
+      "TAICHUNG OLD TOWN · TAIWAN",
 
-          <p>
-            After Taiwan's local administrative system was
-            reorganized in 1920, the building became the seat
-            of Taichung Prefecture, which governed an area covering
-            much of today's Taichung, Changhua, and Nantou.
-          </p>
-          <br>
+    placeName:
+      "Taichung<br>Prefectural Hall",
 
-          <p>
-            Expanded in several stages until 1934, the building
-            witnessed Taichung's growth as an important administrative
-            center in central Taiwan. Today, it is preserved as
-            a National Monument.
-          </p>
-        `;
-      }
+    subtitle:
+      "Governance · Architecture · Urban Development",
 
-      if (mode === "story") {
+    intro:
+      "More than a historic building, Taichung Prefectural Hall witnessed the transformation of Taichung into a modern city. Choose how you would like StoryLens to tell its story.",
 
-        title.innerText = "Story Mode";
+    languageTitle:
+      "Choose your language",
 
-        text.innerHTML = `
-          <p>
-            Imagine standing on this street more than a century ago.
-            Taichung was changing rapidly, and a new government
-            building was beginning to rise at this very corner.
-          </p>
-          <br>
+    languageDescription:
+      "Experience local history in the language that feels most natural to you.",
 
-          <p>
-            Construction began in 1913. But the building you see
-            today did not appear all at once. As the city developed,
-            the complex continued to grow through several stages
-            of expansion.
-          </p>
-          <br>
+    exploreTitle:
+      "How would you like to explore?",
 
-          <p>
-            Then came 1920. Taiwan's local administrative system
-            was reorganized, and Taichung became the center of the
-            newly established Taichung Prefecture. The former
-            government office became Taichung Prefectural Hall.
-          </p>
-          <br>
+    exploreDescription:
+      "One place can tell many different stories.",
 
-          <p>
-            Government offices gathered around the city, people
-            arrived, and Taichung strengthened its role as a political,
-            economic, and cultural center of central Taiwan.
-          </p>
-          <br>
+    quickTitle:
+      "Quick Story",
 
-          <p>
-            By 1934, the building had largely reached the form
-            we recognize today. More than a century later, its walls
-            still tell a story of how the city around them changed.
-          </p>
-        `;
-      }
+    quickDescription:
+      "I only have a minute.",
 
-      if (mode === "deep") {
+    storyModeTitle:
+      "Story Mode",
 
-        title.innerText = "Deep Dive";
+    storyModeDescription:
+      "Take me into the story.",
 
-        text.innerHTML = `
-          <p>
-            The main construction of what is now Taichung Prefectural
-            Hall began in 1913 as the office of the Taichung Chō
-            administration. Its first phase was completed in 1914,
-            followed by several stages of expansion. By 1934,
-            the complex had reached its principal present-day scale.
-          </p>
-          <br>
+    deepTitle:
+      "Deep Dive",
 
-          <p>
-            A major turning point came in 1920, when the Japanese
-            colonial government reorganized Taiwan's local
-            administrative divisions. Taichung Prefecture was
-            established, covering areas corresponding broadly to
-            present-day Taichung City, Changhua County, and Nantou County.
-          </p>
-          <br>
+    deepDescription:
+      "Give me the historical context.",
 
-          <p>
-            As the prefectural capital, Taichung attracted
-            administrative institutions and population, strengthening
-            its position as a political, economic, and cultural center
-            in central Taiwan.
-          </p>
-          <br>
+    simpleTitle:
+      "Simple Mode",
 
-          <p>
-            The building was designed by Moriyama Matsunosuke,
-            an architect and engineer who worked for the
-            Government-General of Taiwan. Its corner-site composition
-            places the main entrance at the intersection, while two
-            wings extend backward from the central section.
-          </p>
-          <br>
+    simpleDescription:
+      "Explain it in an easy way.",
 
-          <p>
-            After World War II, the building continued to serve
-            governmental functions as offices of the Taichung City
-            Government. It was later designated a National Monument.
-          </p>
-        `;
-      }
+    storyLabel:
+      "STORYLENS EXPERIENCE",
 
-      if (mode === "simple") {
+    askLabel:
+      "AI CULTURAL GUIDE",
 
-        title.innerText = "Simple Mode";
+    askTitle:
+      "Ask StoryLens",
 
-        text.innerHTML = `
-          <p>
-            This building is more than 100 years old.
-          </p>
-          <br>
+    askIntro:
+      "Curious about this place? Ask StoryLens a question. Answers are generated from a trusted cultural knowledge base.",
 
-          <p>
-            Construction began in 1913. At first, it was used as
-            a local government office. In 1920, Taichung became the
-            center of a much larger administrative region called
-            Taichung Prefecture.
-          </p>
-          <br>
+    placeholder:
+      "Why is this place important?",
 
-          <p>
-            The building was expanded several times as the city grew.
-            By 1934, it looked much closer to the building we see today.
-          </p>
-          <br>
+    askButton:
+      "Ask →",
 
-          <p>
-            That is why Taichung Prefectural Hall matters:
-            it helps us see how Taichung changed and developed
-            over more than a century.
-          </p>
-        `;
-      }
+    thinking:
+      "Thinking...",
 
-      box.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
+    consulting:
+      "StoryLens is consulting the trusted cultural knowledge base...",
+
+    suggestedTitle:
+      "TRY ASKING",
+
+    suggestions: [
+      "Why is this building important?",
+      "When was it built?",
+      "Who designed it?"
+    ],
+
+    responseLabel:
+      "STORYLENS ANSWER",
+
+    youAsked:
+      "You asked:",
+
+    grounded:
+      "✓ Grounded in trusted cultural sources",
+
+    responsible:
+      "<strong>Responsible AI:</strong> StoryLens retrieves trusted cultural knowledge before generating an answer. When reliable information is unavailable, it is designed to say so rather than invent historical facts.",
+
+    sourcesTitle:
+      "✓ Trusted Sources",
+
+    sourcesIntro:
+      "StoryLens uses verified cultural and historical information instead of asking AI to generate historical facts from imagination.",
+
+    source1:
+      "History of Taichung Prefectural Hall",
+
+    source2:
+      "National Monument Record: Taichung Prefectural Hall",
+
+    update:
+      "Knowledge Base updated: September 2026",
+
+    error:
+      "StoryLens couldn't reach the AI cultural guide right now. Please try again in a moment."
+
+  },
+
+
+  zh: {
+
+    back:
+      "← 返回探索",
+
+    placeType:
+      "臺中舊城 · 臺灣",
+
+    placeName:
+      "臺中州廳",
+
+    subtitle:
+      "治理 · 建築 · 都市發展",
+
+    intro:
+      "臺中州廳不只是一座歷史建築，也見證了臺中城市發展與行政變遷的歷程。選擇你喜歡的方式，讓 StoryLens 帶你認識它的故事。",
+
+    languageTitle:
+      "選擇你的語言",
+
+    languageDescription:
+      "用最自然的語言，走進一座城市的歷史。",
+
+    exploreTitle:
+      "你想怎麼探索？",
+
+    exploreDescription:
+      "同一個地方，也可以有不同的說故事方式。",
+
+    quickTitle:
+      "快速故事",
+
+    quickDescription:
+      "我只有一分鐘。",
+
+    storyModeTitle:
+      "故事模式",
+
+    storyModeDescription:
+      "帶我走進它的故事。",
+
+    deepTitle:
+      "深度探索",
+
+    deepDescription:
+      "我想了解完整的歷史脈絡。",
+
+    simpleTitle:
+      "簡易模式",
+
+    simpleDescription:
+      "用簡單易懂的方式告訴我。",
+
+    storyLabel:
+      "STORYLENS 文化體驗",
+
+    askLabel:
+      "AI 文化嚮導",
+
+    askTitle:
+      "問問 StoryLens",
+
+    askIntro:
+      "對這個地方感到好奇嗎？直接問 StoryLens。回答會依據可信的文化與歷史知識庫生成。",
+
+    placeholder:
+      "為什麼這個地方很重要？",
+
+    askButton:
+      "提問 →",
+
+    thinking:
+      "思考中...",
+
+    consulting:
+      "StoryLens 正在查閱可信的文化知識庫...",
+
+    suggestedTitle:
+      "你可以問",
+
+    suggestions: [
+      "為什麼臺中州廳很重要？",
+      "臺中州廳是什麼時候興建的？",
+      "這座建築是誰設計的？"
+    ],
+
+    responseLabel:
+      "STORYLENS 回答",
+
+    youAsked:
+      "你的問題：",
+
+    grounded:
+      "✓ 依據可信文化資料生成",
+
+    responsible:
+      "<strong>負責任的 AI：</strong> StoryLens 會先依據可信的文化知識，再生成回答。當現有資料不足時，它會明確說明，而不是自行虛構歷史。",
+
+    sourcesTitle:
+      "✓ 可信資料來源",
+
+    sourcesIntro:
+      "StoryLens 使用經查證的文化與歷史資訊，而不是讓 AI 憑空生成歷史事實。",
+
+    source1:
+      "臺中州廳歷史與相關資訊",
+
+    source2:
+      "國定古蹟臺中州廳文化資產紀錄",
+
+    update:
+      "知識庫更新：2026 年 9 月",
+
+    error:
+      "StoryLens 目前無法連線至 AI 文化嚮導，請稍後再試。"
+
+  }
+
+};
+
+
+const stories = {
+
+  en: {
+
+    quick: {
+      title: "Quick Story",
+      text: `
+        <p>Taichung Prefectural Hall began its story in 1913, when construction started on a new government office for Taichung.</p><br>
+
+        <p>After Taiwan's local administrative system was reorganized in 1920, the building became the seat of Taichung Prefecture, which governed an area covering much of today's Taichung, Changhua, and Nantou.</p><br>
+
+        <p>Expanded in several stages until 1934, the building witnessed Taichung's growth as an important administrative center in central Taiwan. Today, it is preserved as a National Monument.</p>
+      `
+    },
+
+    story: {
+      title: "Story Mode",
+      text: `
+        <p>Imagine standing on this street more than a century ago. Taichung was changing rapidly, and a new government building was beginning to rise at this very corner.</p><br>
+
+        <p>Construction began in 1913. But the building you see today did not appear all at once. As the city developed, the complex continued to grow through several stages of expansion.</p><br>
+
+        <p>Then came 1920. Taiwan's local administrative system was reorganized, and Taichung became the center of the newly established Taichung Prefecture. The former government office became Taichung Prefectural Hall.</p><br>
+
+        <p>Government offices gathered around the city, people arrived, and Taichung strengthened its role as a political, economic, and cultural center of central Taiwan.</p><br>
+
+        <p>By 1934, the building had largely reached the form we recognize today. More than a century later, its walls still tell a story of how the city around them changed.</p>
+      `
+    },
+
+    deep: {
+      title: "Deep Dive",
+      text: `
+        <p>The main construction of what is now Taichung Prefectural Hall began in 1913 as the office of the Taichung Chō administration. Its first phase was completed in 1914, followed by several stages of expansion. By 1934, the complex had reached its principal present-day scale.</p><br>
+
+        <p>A major turning point came in 1920, when the Japanese colonial government reorganized Taiwan's local administrative divisions. Taichung Prefecture was established, covering areas corresponding broadly to present-day Taichung City, Changhua County, and Nantou County.</p><br>
+
+        <p>As the prefectural capital, Taichung attracted administrative institutions and population, strengthening its position as a political, economic, and cultural center in central Taiwan.</p><br>
+
+        <p>The building was designed by Moriyama Matsunosuke, an architect and engineer who worked for the Government-General of Taiwan. Its corner-site composition places the main entrance at the intersection, while two wings extend backward from the central section.</p><br>
+
+        <p>After World War II, the building continued to serve governmental functions as offices of the Taichung City Government. It was later designated a National Monument.</p>
+      `
+    },
+
+    simple: {
+      title: "Simple Mode",
+      text: `
+        <p>This building is more than 100 years old.</p><br>
+
+        <p>Construction began in 1913. At first, it was used as a local government office. In 1920, Taichung became the center of a much larger administrative region called Taichung Prefecture.</p><br>
+
+        <p>The building was expanded several times as the city grew. By 1934, it looked much closer to the building we see today.</p><br>
+
+        <p>That is why Taichung Prefectural Hall matters: it helps us see how Taichung changed and developed over more than a century.</p>
+      `
+    }
+
+  },
+
+
+  zh: {
+
+    quick: {
+      title: "快速故事",
+      text: `
+        <p>臺中州廳的故事可以追溯至 1913 年，當時開始興建新的地方行政辦公建築，第一期工程於 1914 年完成。</p><br>
+
+        <p>1920 年臺灣地方行政制度改制後，臺中州成立，這座建築成為臺中州的重要行政中心。當時臺中州的範圍大致涵蓋今日的臺中、彰化與南投。</p><br>
+
+        <p>建築之後歷經多次擴建，至 1934 年大致形成今日所見的規模。如今，臺中州廳已被指定為國定古蹟。</p>
+      `
+    },
+
+    story: {
+      title: "故事模式",
+      text: `
+        <p>想像你站在一百多年前的這個街角。當時的臺中正在快速改變，而一座新的行政建築也開始在這裡出現。</p><br>
+
+        <p>1913 年，建築工程正式展開。但我們今天看到的臺中州廳，並不是一次完成的。隨著城市與行政需求發展，建築也經歷了數個階段的擴建。</p><br>
+
+        <p>1920 年是一個重要轉折。臺灣地方行政制度重新調整，臺中州成立，這裡也成為臺中州的重要行政中心。</p><br>
+
+        <p>隨著行政機構與人口逐漸集中，臺中在中部地區的政治、經濟與文化角色也更加重要。</p><br>
+
+        <p>到了 1934 年，臺中州廳大致形成今日我們所熟悉的規模。一百多年後，這座建築仍然讓我們看見城市曾經走過的變化。</p>
+      `
+    },
+
+    deep: {
+      title: "深度探索",
+      text: `
+        <p>今日臺中州廳主要建築的工程始於 1913 年，第一期工程於 1914 年完成，之後又經歷多個階段的擴建，至 1934 年大致形成今日主要的建築規模。</p><br>
+
+        <p>1920 年，日本殖民政府重新調整臺灣地方行政制度，臺中州正式成立，其管轄範圍大致對應今日的臺中市、彰化縣與南投縣。</p><br>
+
+        <p>臺中作為州治所在地，行政機構與人口逐漸集中，也進一步強化了其作為中臺灣政治、經濟與文化中心的角色。</p><br>
+
+        <p>臺中州廳由任職於臺灣總督府的建築技師森山松之助設計。建築位於街角，主要入口朝向道路交會處，中央區域向後延伸出兩翼，呈現當時政府建築常見的西方歷史式與新古典主義影響。</p><br>
+
+        <p>第二次世界大戰後，建築仍持續作為臺中市政府辦公空間使用，之後被指定為國定古蹟，成為臺中行政與都市發展歷史的重要實體見證。</p>
+      `
+    },
+
+    simple: {
+      title: "簡易模式",
+      text: `
+        <p>這是一座超過一百年歷史的建築。</p><br>
+
+        <p>臺中州廳從 1913 年開始興建。1920 年臺中州成立後，這裡成為重要的行政辦公場所。</p><br>
+
+        <p>隨著城市發展，建築也經歷多次擴建。到了 1934 年，它已經大致形成今天看到的規模。</p><br>
+
+        <p>所以臺中州廳的重要之處，在於它讓我們能從一座真實存在的建築，看見臺中一百多年來的城市與行政發展。</p>
+      `
+    }
+
+  }
+
+};
+
+
+function setLanguage(language) {
+
+  currentLanguage = language;
+
+  document.documentElement.lang =
+    language === "zh" ? "zh-Hant" : "en";
+
+  const text = uiText[language];
+
+  document.getElementById("englishButton")
+    .classList.toggle("active", language === "en");
+
+  document.getElementById("chineseButton")
+    .classList.toggle("active", language === "zh");
+
+  document.getElementById("backLink").innerText =
+    text.back;
+
+  document.getElementById("placeType").innerText =
+    text.placeType;
+
+  document.getElementById("placeName").innerHTML =
+    text.placeName;
+
+  document.getElementById("subtitle").innerText =
+    text.subtitle;
+
+  document.getElementById("intro").innerText =
+    text.intro;
+
+  document.getElementById("languageTitle").innerText =
+    text.languageTitle;
+
+  document.getElementById("languageDescription").innerText =
+    text.languageDescription;
+
+  document.getElementById("exploreTitle").innerText =
+    text.exploreTitle;
+
+  document.getElementById("exploreDescription").innerText =
+    text.exploreDescription;
+
+  document.getElementById("quickTitle").innerText =
+    text.quickTitle;
+
+  document.getElementById("quickDescription").innerText =
+    text.quickDescription;
+
+  document.getElementById("storyModeTitle").innerText =
+    text.storyModeTitle;
+
+  document.getElementById("storyModeDescription").innerText =
+    text.storyModeDescription;
+
+  document.getElementById("deepTitle").innerText =
+    text.deepTitle;
+
+  document.getElementById("deepDescription").innerText =
+    text.deepDescription;
+
+  document.getElementById("simpleTitle").innerText =
+    text.simpleTitle;
+
+  document.getElementById("simpleDescription").innerText =
+    text.simpleDescription;
+
+  document.getElementById("storyLabel").innerText =
+    text.storyLabel;
+
+  document.getElementById("askLabel").innerText =
+    text.askLabel;
+
+  document.getElementById("askTitle").innerText =
+    text.askTitle;
+
+  document.getElementById("askIntro").innerText =
+    text.askIntro;
+
+  document.getElementById("questionInput").placeholder =
+    text.placeholder;
+
+  document.getElementById("askButton").innerText =
+    text.askButton;
+
+  document.getElementById("suggestedTitle").innerText =
+    text.suggestedTitle;
+
+  document.getElementById("suggestion1").innerText =
+    text.suggestions[0];
+
+  document.getElementById("suggestion2").innerText =
+    text.suggestions[1];
+
+  document.getElementById("suggestion3").innerText =
+    text.suggestions[2];
+
+  document.getElementById("responseLabel").innerText =
+    text.responseLabel;
+
+  document.getElementById("groundedBadge").innerText =
+    text.grounded;
+
+  document.getElementById("responsibleAI").innerHTML =
+    text.responsible;
+
+  document.getElementById("sourcesTitle").innerText =
+    text.sourcesTitle;
+
+  document.getElementById("sourcesIntro").innerText =
+    text.sourcesIntro;
+
+  document.getElementById("source1Description").innerText =
+    text.source1;
+
+  document.getElementById("source2Description").innerText =
+    text.source2;
+
+  document.getElementById("knowledgeUpdate").innerText =
+    text.update;
+
+
+  document.getElementById("aiResponse")
+    .classList.remove("show");
+
+
+  if (currentStoryMode) {
+    showStory(currentStoryMode, false);
+  }
+}
+
+
+function showStory(mode, scroll = true) {
+
+  currentStoryMode = mode;
+
+  const story =
+    stories[currentLanguage][mode];
+
+  const box =
+    document.getElementById("storyBox");
+
+  document.getElementById("storyTitle").innerText =
+    story.title;
+
+  document.getElementById("storyText").innerHTML =
+    story.text;
+
+  box.classList.add("show");
+
+  if (scroll) {
+    box.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
+}
+
+
+function askSuggested(number) {
+
+  const question =
+    uiText[currentLanguage].suggestions[number - 1];
+
+  document.getElementById("questionInput").value =
+    question;
+
+  askStoryLens();
+}
+
+
+function handleEnter(event) {
+
+  if (event.key === "Enter") {
+    askStoryLens();
+  }
+}
+
+
+async function askStoryLens() {
+
+  const input =
+    document.getElementById("questionInput");
+
+  const button =
+    document.getElementById("askButton");
+
+  const responseBox =
+    document.getElementById("aiResponse");
+
+  const displayQuestion =
+    document.getElementById("displayQuestion");
+
+  const answerText =
+    document.getElementById("answerText");
+
+  const groundedBadge =
+    document.getElementById("groundedBadge");
+
+  const responseSources =
+    document.getElementById("responseSources");
+
+  const question =
+    input.value.trim();
+
+  const text =
+    uiText[currentLanguage];
+
+
+  if (!question) {
+    return;
+  }
+
+
+  displayQuestion.innerText =
+    `${text.youAsked} “${question}”`;
+
+  answerText.innerText =
+    text.consulting;
+
+  groundedBadge.style.display =
+    "none";
+
+  responseSources.style.display =
+    "none";
+
+  responseBox.classList.add("show");
+
+  button.disabled =
+    true;
+
+  button.innerText =
+    text.thinking;
+
+
+  try {
+
+    const response =
+      await fetch(STORYLENS_API, {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          question: question
+        })
+
       });
+
+
+    const data =
+      await response.json();
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.error ||
+        "StoryLens could not answer this question."
+      );
+
     }
 
 
-    function askSuggested(question) {
+    if (!data.answer) {
 
-      document.getElementById("questionInput").value =
-        question;
+      throw new Error(
+        "StoryLens returned an empty answer."
+      );
 
-      askStoryLens();
     }
 
 
-    function handleEnter(event) {
-
-      if (event.key === "Enter") {
-        askStoryLens();
-      }
-    }
+    answerText.innerText =
+      data.answer;
 
 
-    async function askStoryLens() {
+    if (data.grounded) {
 
-      const input =
-        document.getElementById("questionInput");
-
-      const button =
-        document.getElementById("askButton");
-
-      const responseBox =
-        document.getElementById("aiResponse");
-
-      const displayQuestion =
-        document.getElementById("displayQuestion");
-
-      const answerText =
-        document.getElementById("answerText");
-
-      const groundedBadge =
-        document.getElementById("groundedBadge");
-
-      const responseSources =
-        document.getElementById("responseSources");
-
-      const question =
-        input.value.trim();
-
-
-      if (!question) {
-        return;
-      }
-
-
-      displayQuestion.innerText =
-        `You asked: “${question}”`;
-
-      answerText.innerText =
-        "StoryLens is consulting the trusted cultural knowledge base...";
+      groundedBadge.innerText =
+        text.grounded;
 
       groundedBadge.style.display =
-        "none";
+        "inline-block";
 
-      responseSources.style.display =
-        "none";
-
-      responseBox.classList.add("show");
-
-      button.disabled = true;
-
-      button.innerText =
-        "Thinking...";
-
-
-      try {
-
-        const response =
-          await fetch(STORYLENS_API, {
-
-            method: "POST",
-
-            headers: {
-              "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-              question: question
-            })
-
-          });
-
-
-        const data =
-          await response.json();
-
-
-        if (!response.ok) {
-
-          throw new Error(
-            data.error ||
-            "StoryLens could not answer this question."
-          );
-
-        }
-
-
-        if (!data.answer) {
-
-          throw new Error(
-            "StoryLens returned an empty answer."
-          );
-
-        }
-
-
-        answerText.innerText =
-          data.answer;
-
-
-        if (data.grounded) {
-
-          groundedBadge.style.display =
-            "inline-block";
-
-        }
-
-
-        if (
-          data.sources &&
-          data.sources.length > 0
-        ) {
-
-          responseSources.innerText =
-            "Sources: " +
-            data.sources.join(" · ");
-
-          responseSources.style.display =
-            "block";
-
-        }
-
-      }
-
-      catch (error) {
-
-        console.error(
-          "StoryLens error:",
-          error
-        );
-
-        answerText.innerText =
-          "StoryLens couldn't reach the AI cultural guide right now. Please try again in a moment.";
-
-        groundedBadge.style.display =
-          "none";
-
-        responseSources.style.display =
-          "none";
-
-      }
-
-      finally {
-
-        button.disabled =
-          false;
-
-        button.innerText =
-          "Ask →";
-
-      }
     }
 
-  </script>
+
+    if (
+      data.sources &&
+      data.sources.length > 0
+    ) {
+
+      responseSources.innerText =
+        (currentLanguage === "zh"
+          ? "資料來源："
+          : "Sources: ") +
+        data.sources.join(" · ");
+
+      responseSources.style.display =
+        "block";
+
+    }
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "StoryLens error:",
+      error
+    );
+
+    answerText.innerText =
+      text.error;
+
+    groundedBadge.style.display =
+      "none";
+
+    responseSources.style.display =
+      "none";
+
+  }
+
+  finally {
+
+    button.disabled =
+      false;
+
+    button.innerText =
+      text.askButton;
+
+  }
+}
+
+
+setLanguage("en");
+
+</script>
 
 </body>
 </html>
