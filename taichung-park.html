@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Taichung Park | StoryLens AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: #f7f4ec;
+      color: #123c3b;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 28px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #45a99d;
+    }
+
+    .back {
+      color: #496966;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 35px 0 38px;
+    }
+
+    .place-type {
+      color: #2a8d82;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: #2a8d82;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      max-width: 680px;
+      color: #5d716f;
+      line-height: 1.8;
+    }
+
+    .section {
+      margin-top: 38px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .section-description {
+      color: #70817f;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .language-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .language {
+      padding: 11px 18px;
+      border-radius: 30px;
+      border: 1px solid #bdd8d3;
+      background: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .language.active {
+      background: #123c3b;
+      color: white;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .experience {
+      background: white;
+      border: 1px solid #e0e9e6;
+      border-radius: 18px;
+      padding: 22px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .experience:hover {
+      transform: translateY(-3px);
+      border-color: #7cc0b6;
+      box-shadow: 0 8px 20px rgba(20, 70, 65, 0.08);
+    }
+
+    .experience .icon {
+      font-size: 27px;
+      margin-bottom: 14px;
+    }
+
+    .experience h3 {
+      margin-bottom: 6px;
+    }
+
+    .experience p {
+      color: #70817f;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .story-box {
+      margin-top: 30px;
+      background: #e6f1ee;
+      border-radius: 20px;
+      padding: 28px;
+      display: none;
+    }
+
+    .story-box.show {
+      display: block;
+    }
+
+    .story-label {
+      color: #2a8d82;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .story-box h2 {
+      margin-bottom: 15px;
+    }
+
+    .story-text {
+      line-height: 1.8;
+      color: #385653;
+    }
+
+    .ask-box {
+      margin-top: 45px;
+      background: #123c3b;
+      color: white;
+      border-radius: 22px;
+      padding: 28px;
+    }
+
+    .ask-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: #74c4b7;
+      margin-bottom: 10px;
+    }
+
+    .ask-box h2 {
+      margin-bottom: 8px;
+      font-size: 27px;
+    }
+
+    .ask-intro {
+      color: #c8dcd8;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      display: flex;
+      gap: 8px;
+    }
+
+    .question input {
+      flex: 1;
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+    }
+
+    .question button {
+      border: none;
+      border-radius: 12px;
+      padding: 14px 20px;
+      background: #74c4b7;
+      color: #103b38;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .suggested-title {
+      margin-top: 18px;
+      margin-bottom: 9px;
+      color: #b9d4cf;
+      font-size: 12px;
+    }
+
+    .suggested-questions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .suggested {
+      background: transparent;
+      color: #dcebe8;
+      border: 1px solid #50736f;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .suggested:hover {
+      background: #204d49;
+    }
+
+    .coming-soon {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      color: #123c3b;
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .coming-soon.show {
+      display: block;
+    }
+
+    .coming-label {
+      color: #2a8d82;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .coming-soon p {
+      color: #48625f;
+      line-height: 1.75;
+    }
+
+    .responsible-ai {
+      margin-top: 22px;
+      border: 1px solid #426762;
+      border-radius: 14px;
+      padding: 15px;
+      color: #c8dcd8;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .responsible-ai strong {
+      color: white;
+    }
+
+    .sources {
+      margin: 30px 0;
+      padding: 22px;
+      border: 1px solid #d9e5e1;
+      border-radius: 18px;
+    }
+
+    .sources h3 {
+      margin-bottom: 12px;
+    }
+
+    .sources > p,
+    .source-item p {
+      color: #70817f;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .source-item {
+      margin-top: 18px;
+    }
+
+    .source-number {
+      color: #2a8d82;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #899895;
+      font-size: 12px;
+      padding: 35px 0;
+    }
+
+    @media (max-width: 650px) {
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .question {
+        flex-direction: column;
+      }
+
+      .question button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <nav>
+    <div class="logo">StoryLens <span>AI</span></div>
+    <a id="backButton" class="back" href="index.html">← Back to Explore</a>
+  </nav>
+
+  <section class="hero">
+
+    <div id="placeType" class="place-type">
+      TAICHUNG OLD TOWN · TAIWAN
+    </div>
+
+    <h1 id="placeTitle">Taichung Park</h1>
+
+    <div id="subtitle" class="subtitle">
+      Everyday Life · Collective Memory · Urban Change
+    </div>
+
+    <p id="intro" class="intro">
+      A city is remembered not only through monuments, but through
+      the places where everyday life happens. For more than a century,
+      Taichung Park has carried different layers of the city's history,
+      public life, and collective memory.
+    </p>
+
+  </section>
+
+
+  <section class="section">
+
+    <h2 id="languageTitle">Choose your language</h2>
+
+    <p id="languageDescription" class="section-description">
+      Experience local history in the language that feels most natural to you.
+    </p>
+
+    <div class="language-buttons">
+      <button id="englishButton" class="language active"
+              onclick="setLanguage('en')">
+        English
+      </button>
+
+      <button id="chineseButton" class="language"
+              onclick="setLanguage('zh')">
+        中文
+      </button>
+    </div>
+
+  </section>
+
+
+  <section class="section">
+
+    <h2 id="exploreTitle">How would you like to explore?</h2>
+
+    <p id="exploreDescription" class="section-description">
+      One park can hold many layers of a city's memory.
+    </p>
+
+    <div class="experience-grid">
+
+      <div class="experience" onclick="showStory('quick')">
+        <div class="icon">⚡</div>
+        <h3 id="quickTitle">Quick Story</h3>
+        <p id="quickDescription">I only have a minute.</p>
+      </div>
+
+      <div class="experience" onclick="showStory('story')">
+        <div class="icon">📖</div>
+        <h3 id="storyModeTitle">Story Mode</h3>
+        <p id="storyModeDescription">Take me into the story.</p>
+      </div>
+
+      <div class="experience" onclick="showStory('deep')">
+        <div class="icon">🌳</div>
+        <h3 id="deepTitle">Deep Dive</h3>
+        <p id="deepDescription">Give me the historical context.</p>
+      </div>
+
+      <div class="experience" onclick="showStory('simple')">
+        <div class="icon">🌱</div>
+        <h3 id="simpleTitle">Simple Mode</h3>
+        <p id="simpleDescription">Explain it in an easy way.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="storyBox" class="story-box">
+
+    <div id="storyLabel" class="story-label">
+      STORYLENS EXPERIENCE
+    </div>
+
+    <h2 id="storyTitle">Your story</h2>
+
+    <div id="storyText" class="story-text"></div>
+
+  </section>
+
+
+  <section class="ask-box">
+
+    <div id="askLabel" class="ask-label">
+      AI CULTURAL GUIDE
+    </div>
+
+    <h2 id="askTitle">Ask StoryLens</h2>
+
+    <p id="askIntro" class="ask-intro">
+      Curious about this park? StoryLens AI will soon answer questions
+      using a trusted cultural and historical knowledge base.
+    </p>
+
+    <div class="question">
+
+      <input
+        id="questionInput"
+        type="text"
+        placeholder="Why is Taichung Park important?"
+        onkeydown="handleEnter(event)"
+      >
+
+      <button id="askButton" onclick="showComingSoon()">
+        Ask →
+      </button>
+
+    </div>
+
+    <div id="suggestedTitle" class="suggested-title">
+      TRY ASKING
+    </div>
+
+    <div class="suggested-questions">
+
+      <button class="suggested"
+              id="suggested1"
+              onclick="askSuggested('Why is Taichung Park important?')">
+        Why is Taichung Park important?
+      </button>
+
+      <button class="suggested"
+              id="suggested2"
+              onclick="askSuggested('When was Taichung Park opened?')">
+        When was the park opened?
+      </button>
+
+      <button class="suggested"
+              id="suggested3"
+              onclick="askSuggested('Why is the Lake Heart Pavilion important?')">
+        Why is the Lake Heart Pavilion important?
+      </button>
+
+    </div>
+
+
+    <div id="comingSoon" class="coming-soon">
+
+      <div id="comingLabel" class="coming-label">
+        STORYLENS AI · NEXT STEP
+      </div>
+
+      <p id="comingText">
+        The Taichung Park knowledge base is being connected to
+        StoryLens AI. Free-form AI questions will be enabled in
+        the next step.
+      </p>
+
+    </div>
+
+
+    <div class="responsible-ai">
+
+      <strong id="responsibleTitle">
+        Responsible AI:
+      </strong>
+
+      <span id="responsibleText">
+        StoryLens retrieves trusted cultural knowledge before generating
+        an answer. When reliable information is unavailable, it should
+        clearly say so rather than invent historical facts.
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <section class="sources">
+
+    <h3 id="sourcesTitle">✓ Trusted Sources</h3>
+
+    <p id="sourcesDescription">
+      StoryLens uses verified cultural and historical information instead
+      of generating historical facts from imagination.
+    </p>
+
+    <div class="source-item">
+      <p>
+        <span class="source-number">01 ·</span>
+        <strong>Cultural Heritage Department of Taichung City</strong>
+        <br>
+        Cultural and historical information about Taichung Park
+      </p>
+    </div>
+
+    <div class="source-item">
+      <p>
+        <span class="source-number">02 ·</span>
+        <strong>Cultural Heritage Department of Taichung City</strong>
+        <br>
+        Municipal Monument Record: Lake Heart Pavilion
+      </p>
+    </div>
+
+    <div class="source-item">
+      <p id="knowledgeUpdate" style="font-size: 12px;">
+        Knowledge Base updated: September 2026
+      </p>
+    </div>
+
+  </section>
+
+
+  <footer>
+    StoryLens AI · ICIC 2026 Prototype
+  </footer>
+
+</div>
+
+
+<script>
+
+  let currentLanguage = "en";
+  let currentStoryMode = null;
+
+
+  const interfaceText = {
+
+    en: {
+
+      back: "← Back to Explore",
+      placeType: "TAICHUNG OLD TOWN · TAIWAN",
+      placeTitle: "Taichung Park",
+
+      subtitle:
+        "Everyday Life · Collective Memory · Urban Change",
+
+      intro:
+        "A city is remembered not only through monuments, but through the places where everyday life happens. For more than a century, Taichung Park has carried different layers of the city's history, public life, and collective memory.",
+
+      languageTitle: "Choose your language",
+
+      languageDescription:
+        "Experience local history in the language that feels most natural to you.",
+
+      exploreTitle:
+        "How would you like to explore?",
+
+      exploreDescription:
+        "One park can hold many layers of a city's memory.",
+
+      quickTitle: "Quick Story",
+      quickDescription: "I only have a minute.",
+
+      storyModeTitle: "Story Mode",
+      storyModeDescription: "Take me into the story.",
+
+      deepTitle: "Deep Dive",
+      deepDescription: "Give me the historical context.",
+
+      simpleTitle: "Simple Mode",
+      simpleDescription: "Explain it in an easy way.",
+
+      storyLabel: "STORYLENS EXPERIENCE",
+
+      askLabel: "AI CULTURAL GUIDE",
+      askTitle: "Ask StoryLens",
+
+      askIntro:
+        "Curious about this park? StoryLens AI will soon answer questions using a trusted cultural and historical knowledge base.",
+
+      placeholder:
+        "Why is Taichung Park important?",
+
+      askButton: "Ask →",
+
+      suggestedTitle: "TRY ASKING",
+
+      suggested1:
+        "Why is Taichung Park important?",
+
+      suggested2:
+        "When was the park opened?",
+
+      suggested3:
+        "Why is the Lake Heart Pavilion important?",
+
+      comingLabel:
+        "STORYLENS AI · NEXT STEP",
+
+      comingText:
+        "The Taichung Park knowledge base is being connected to StoryLens AI. Free-form AI questions will be enabled in the next step.",
+
+      responsibleTitle:
+        "Responsible AI:",
+
+      responsibleText:
+        " StoryLens retrieves trusted cultural knowledge before generating an answer. When reliable information is unavailable, it should clearly say so rather than invent historical facts.",
+
+      sourcesTitle:
+        "✓ Trusted Sources",
+
+      sourcesDescription:
+        "StoryLens uses verified cultural and historical information instead of generating historical facts from imagination.",
+
+      knowledgeUpdate:
+        "Knowledge Base updated: September 2026"
+    },
+
+
+    zh: {
+
+      back: "← 返回探索",
+      placeType: "臺中舊城 · 臺灣",
+      placeTitle: "臺中公園",
+
+      subtitle:
+        "日常生活 · 集體記憶 · 城市變遷",
+
+      intro:
+        "一座城市不只透過紀念碑被記住，也存在於人們日常生活發生的地方。一百多年來，臺中公園承載著城市不同時期的歷史、公共生活與集體記憶。",
+
+      languageTitle:
+        "選擇你的語言",
+
+      languageDescription:
+        "用最自然的語言，走進一座城市的歷史。",
+
+      exploreTitle:
+        "你想怎麼認識這個地方？",
+
+      exploreDescription:
+        "一座公園，也可以保存城市不同層次的記憶。",
+
+      quickTitle:
+        "快速故事",
+
+      quickDescription:
+        "我只有一分鐘。",
+
+      storyModeTitle:
+        "故事模式",
+
+      storyModeDescription:
+        "帶我走進它的故事。",
+
+      deepTitle:
+        "深度探索",
+
+      deepDescription:
+        "我想了解完整的歷史脈絡。",
+
+      simpleTitle:
+        "簡單模式",
+
+      simpleDescription:
+        "用容易理解的方式告訴我。",
+
+      storyLabel:
+        "STORYLENS 故事體驗",
+
+      askLabel:
+        "AI 文化嚮導",
+
+      askTitle:
+        "問問 StoryLens",
+
+      askIntro:
+        "對這座公園感到好奇嗎？StoryLens AI 即將能依據可信的文化與歷史知識庫回答你的問題。",
+
+      placeholder:
+        "為什麼臺中公園很重要？",
+
+      askButton:
+        "提問 →",
+
+      suggestedTitle:
+        "你可以問",
+
+      suggested1:
+        "為什麼臺中公園很重要？",
+
+      suggested2:
+        "臺中公園是什麼時候開園的？",
+
+      suggested3:
+        "湖心亭為什麼重要？",
+
+      comingLabel:
+        "STORYLENS AI · 下一步",
+
+      comingText:
+        "臺中公園的可信知識庫正在與 StoryLens AI 連接中，自由 AI 提問功能將在下一步啟用。",
+
+      responsibleTitle:
+        "負責任的 AI：",
+
+      responsibleText:
+        " StoryLens 會先依據可信的文化知識，再生成回答。當現有資料不足時，它會明確說明，而不是自行虛構歷史。",
+
+      sourcesTitle:
+        "✓ 可信資料來源",
+
+      sourcesDescription:
+        "StoryLens 使用經過確認的文化與歷史資訊，而不是憑空生成歷史事實。",
+
+      knowledgeUpdate:
+        "知識庫更新：2026 年 9 月"
+    }
+
+  };
+
+
+  const stories = {
+
+    en: {
+
+      quick: {
+        title: "Quick Story",
+        text: `
+          <p>Taichung Park officially opened on October 28, 1903, during an important period of urban development in Taichung.</p><br>
+
+          <p>In 1908, the park became an important site for celebrations marking the completion of Taiwan's north-south trunk railway. The pavilion now known as the Lake Heart Pavilion was built in connection with this event.</p><br>
+
+          <p>More than a century later, the park remains a place where different layers of Taichung's history and public memory can still be seen.</p>
+        `
+      },
+
+      story: {
+        title: "Story Mode",
+        text: `
+          <p>A city is remembered not only through government buildings or railway stations.</p><br>
+
+          <p>Sometimes, memory lives in a park: beside a pond, along a familiar path, or in a pavilion reflected on the water.</p><br>
+
+          <p>Taichung Park officially opened in 1903. Yet the land around it carried traces of earlier Taichung as well. One of these is Paotai Hill, associated with the historical name “Dadun.”</p><br>
+
+          <p>In 1908, the park became part of another important chapter. Celebrations for the completion of Taiwan's north-south trunk railway were held here, and the pavilion later known as the Lake Heart Pavilion was built in connection with the event.</p><br>
+
+          <p>After World War II, names changed. The park was once called Zhongshan Park before the name “Taichung Park” was restored in 2000.</p><br>
+
+          <p>Generations of people have passed through this landscape. That is why the park tells more than one historical story: it also shows how a public place can become part of a city's collective memory.</p>
+        `
+      },
+
+      deep: {
+        title: "Deep Dive",
+        text: `
+          <p>Taichung Park developed during the period of modern urban planning in early twentieth-century Taichung and officially opened on October 28, 1903.</p><br>
+
+          <p>The park incorporated and preserved elements connected with earlier local history, including Paotai Hill and other existing spaces. Paotai Hill is associated with the historical place-name “Dadun,” an important name in the history of Taichung.</p><br>
+
+          <p>The park's water landscape developed from a natural body of water that was later modified and improved.</p><br>
+
+          <p>In 1908, celebrations marking the completion of Taiwan's north-south trunk railway took place in Taichung Park. A pavilion was constructed on the water in connection with the event.</p><br>
+
+          <p>Prince Kan'in Kotohito visited Taichung for the railway celebration and used the pavilion as a place to rest and watch performances. The structure later became widely known as the Lake Heart Pavilion.</p><br>
+
+          <p>After World War II, the park was renamed Zhongshan Park, while the pond and pavilion also received new names. In 2000, the name Taichung Park was restored.</p><br>
+
+          <p>The Lake Heart Pavilion was designated a municipal monument on April 17, 1999. Today, Taichung Park contains cultural heritage from several periods, allowing the landscape itself to reveal layers of the city's development.</p>
+        `
+      },
+
+      simple: {
+        title: "Simple Mode",
+        text: `
+          <p>Taichung Park is one of the city's historic public spaces. It officially opened in 1903.</p><br>
+
+          <p>The park is special because different parts of Taichung's history can be found in the same place.</p><br>
+
+          <p>In 1908, an important railway celebration was held here. The famous Lake Heart Pavilion is connected with that event.</p><br>
+
+          <p>The park's name changed after World War II, but it was renamed Taichung Park again in 2000.</p><br>
+
+          <p>Today, people can enjoy the park while also seeing traces of the city's past.</p>
+        `
+      }
+
+    },
+
+
+    zh: {
+
+      quick: {
+        title: "快速故事",
+        text: `
+          <p>臺中公園於 1903 年 10 月 28 日正式落成啟用，見證臺中近代都市發展的重要階段。</p><br>
+
+          <p>1908 年，臺灣縱貫鐵路全線通車的相關慶祝活動在此舉行，今日所稱的湖心亭也與這場活動有密切關係。</p><br>
+
+          <p>一百多年後，臺中公園仍保存著不同時期的城市歷史，也成為許多世代共同的城市記憶。</p>
+        `
+      },
+
+      story: {
+        title: "故事模式",
+        text: `
+          <p>一座城市，不只存在於州廳、車站與宏偉的建築裡。</p><br>
+
+          <p>有時候，城市的記憶藏在一座公園裡——一池水、一條熟悉的小路，或是一座倒映在水面上的亭子。</p><br>
+
+          <p>臺中公園於 1903 年正式落成啟用，但這片土地也保存著更早以前的城市痕跡。例如園內的砲台山，就與臺中過去「大墩」的地名歷史有所關聯。</p><br>
+
+          <p>1908 年，臺灣縱貫鐵路全線通車，臺中公園成為相關慶祝活動的重要場域，而後來被稱為「湖心亭」的建築也與這場活動密切相關。</p><br>
+
+          <p>第二次世界大戰後，公園曾改名為「中山公園」，直到 2000 年才恢復「臺中公園」之名。</p><br>
+
+          <p>一代又一代的人走過這片風景。於是臺中公園保存的不只是某一年的歷史事件，也是一座公共空間如何慢慢成為城市共同記憶的故事。</p>
+        `
+      },
+
+      deep: {
+        title: "深度探索",
+        text: `
+          <p>臺中公園的發展與二十世紀初臺中的近代都市規劃有密切關係，並於 1903 年 10 月 28 日正式落成啟用。</p><br>
+
+          <p>園區整合並保存了與更早地方歷史相關的空間與地景，其中包括砲台山。砲台山與臺中古名「大墩」的歷史有所關聯。</p><br>
+
+          <p>園內的水域原具有天然水體的基礎，之後經過人工整理與改造，逐漸形成今日公園的重要水景。</p><br>
+
+          <p>1908 年，臺灣縱貫鐵路全線通車的相關慶祝活動在臺中公園舉行，並在水面上興建一座亭子。</p><br>
+
+          <p>閑院宮載仁親王來臺參與鐵路通車相關活動時，曾在亭內休憩及觀看表演。這座建築後來廣為人知的名稱便是「湖心亭」。</p><br>
+
+          <p>第二次世界大戰後，臺中公園曾改稱「中山公園」，園內水池與亭子也曾使用不同名稱。2000 年，公園恢復「臺中公園」之名。</p><br>
+
+          <p>湖心亭於 1999 年 4 月 17 日指定為市定古蹟。今日園區保存著不同時期留下的文化資產，使人們能從同一片城市景觀中，看見臺中不同階段的發展。</p>
+        `
+      },
+
+      simple: {
+        title: "簡單模式",
+        text: `
+          <p>臺中公園是臺中很有歷史的公共空間，1903 年正式開園。</p><br>
+
+          <p>它特別的地方，是在同一座公園裡可以看到不同時期留下來的城市歷史。</p><br>
+
+          <p>1908 年，臺灣縱貫鐵路全線通車的相關活動曾在這裡舉行，大家熟悉的湖心亭也和這場活動有關。</p><br>
+
+          <p>戰後公園曾改名為中山公園，到了 2000 年才恢復臺中公園的名稱。</p><br>
+
+          <p>所以今天來到這裡，不只能散步、休息，也能從周遭的景觀看見臺中的過去。</p>
+        `
+      }
+
+    }
+
+  };
+
+
+  function setLanguage(language) {
+
+    currentLanguage = language;
+    const text = interfaceText[language];
+
+    document.documentElement.lang =
+      language === "zh" ? "zh-Hant" : "en";
+
+    document.getElementById("englishButton")
+      .classList.toggle("active", language === "en");
+
+    document.getElementById("chineseButton")
+      .classList.toggle("active", language === "zh");
+
+    document.getElementById("backButton").innerText = text.back;
+    document.getElementById("placeType").innerText = text.placeType;
+    document.getElementById("placeTitle").innerHTML = text.placeTitle;
+    document.getElementById("subtitle").innerText = text.subtitle;
+    document.getElementById("intro").innerText = text.intro;
+
+    document.getElementById("languageTitle").innerText =
+      text.languageTitle;
+
+    document.getElementById("languageDescription").innerText =
+      text.languageDescription;
+
+    document.getElementById("exploreTitle").innerText =
+      text.exploreTitle;
+
+    document.getElementById("exploreDescription").innerText =
+      text.exploreDescription;
+
+    document.getElementById("quickTitle").innerText =
+      text.quickTitle;
+
+    document.getElementById("quickDescription").innerText =
+      text.quickDescription;
+
+    document.getElementById("storyModeTitle").innerText =
+      text.storyModeTitle;
+
+    document.getElementById("storyModeDescription").innerText =
+      text.storyModeDescription;
+
+    document.getElementById("deepTitle").innerText =
+      text.deepTitle;
+
+    document.getElementById("deepDescription").innerText =
+      text.deepDescription;
+
+    document.getElementById("simpleTitle").innerText =
+      text.simpleTitle;
+
+    document.getElementById("simpleDescription").innerText =
+      text.simpleDescription;
+
+    document.getElementById("storyLabel").innerText =
+      text.storyLabel;
+
+    document.getElementById("askLabel").innerText =
+      text.askLabel;
+
+    document.getElementById("askTitle").innerText =
+      text.askTitle;
+
+    document.getElementById("askIntro").innerText =
+      text.askIntro;
+
+    document.getElementById("questionInput").placeholder =
+      text.placeholder;
+
+    document.getElementById("askButton").innerText =
+      text.askButton;
+
+    document.getElementById("suggestedTitle").innerText =
+      text.suggestedTitle;
+
+    document.getElementById("suggested1").innerText =
+      text.suggested1;
+
+    document.getElementById("suggested2").innerText =
+      text.suggested2;
+
+    document.getElementById("suggested3").innerText =
+      text.suggested3;
+
+    document.getElementById("comingLabel").innerText =
+      text.comingLabel;
+
+    document.getElementById("comingText").innerText =
+      text.comingText;
+
+    document.getElementById("responsibleTitle").innerText =
+      text.responsibleTitle;
+
+    document.getElementById("responsibleText").innerText =
+      text.responsibleText;
+
+    document.getElementById("sourcesTitle").innerText =
+      text.sourcesTitle;
+
+    document.getElementById("sourcesDescription").innerText =
+      text.sourcesDescription;
+
+    document.getElementById("knowledgeUpdate").innerText =
+      text.knowledgeUpdate;
+
+    if (currentStoryMode) {
+      showStory(currentStoryMode, false);
+    }
+
+    document.getElementById("comingSoon")
+      .classList.remove("show");
+  }
+
+
+  function showStory(mode, shouldScroll = true) {
+
+    currentStoryMode = mode;
+
+    const story =
+      stories[currentLanguage][mode];
+
+    const box =
+      document.getElementById("storyBox");
+
+    document.getElementById("storyTitle").innerText =
+      story.title;
+
+    document.getElementById("storyText").innerHTML =
+      story.text;
+
+    box.classList.add("show");
+
+    if (shouldScroll) {
+      box.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+  }
+
+
+  function askSuggested(englishQuestion) {
+
+    let question = englishQuestion;
+
+    if (currentLanguage === "zh") {
+
+      if (
+        englishQuestion ===
+        "Why is Taichung Park important?"
+      ) {
+        question =
+          "為什麼臺中公園很重要？";
+      }
+
+      if (
+        englishQuestion ===
+        "When was Taichung Park opened?"
+      ) {
+        question =
+          "臺中公園是什麼時候開園的？";
+      }
+
+      if (
+        englishQuestion ===
+        "Why is the Lake Heart Pavilion important?"
+      ) {
+        question =
+          "湖心亭為什麼重要？";
+      }
+    }
+
+    document.getElementById("questionInput").value =
+      question;
+
+    showComingSoon();
+  }
+
+
+  function handleEnter(event) {
+
+    if (event.key === "Enter") {
+      showComingSoon();
+    }
+  }
+
+
+  function showComingSoon() {
+
+    const box =
+      document.getElementById("comingSoon");
+
+    box.classList.add("show");
+
+    box.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  }
+
+
+  setLanguage("en");
+
+</script>
+
+</body>
+</html>
