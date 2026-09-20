@@ -1,517 +1,708 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Taichung Prefectural Hall | StoryLens AI</title>
+  <title>Taichung Prefectural Hall | StoryLens AI</title>
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body{
-  font-family:Arial, Helvetica, sans-serif;
-  background:#f7f4ec;
-  color:#123c3b;
-}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f4ec;
+      color: #123c3b;
+    }
 
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
-}
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
 
-/* NAV */
+    /* Navigation */
 
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 0 28px;
-}
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 28px;
+    }
 
-.logo{
-  font-size:21px;
-  font-weight:bold;
-}
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+    }
 
-.logo span{
-  color:#45a99d;
-}
+    .logo span {
+      color: #45a99d;
+    }
 
-.back{
-  color:#496966;
-  text-decoration:none;
-  font-size:14px;
-}
+    .back {
+      color: #496966;
+      text-decoration: none;
+      font-size: 14px;
+    }
 
-/* HERO */
+    /* Hero */
 
-.hero{
-  padding:35px 0 38px;
-}
+    .hero {
+      padding: 35px 0 38px;
+    }
 
-.place-type{
-  color:#2a8d82;
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:2px;
-  margin-bottom:14px;
-}
+    .place-type {
+      color: #2a8d82;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
 
-h1{
-  font-size:clamp(38px,8vw,62px);
-  line-height:1.05;
-  margin-bottom:16px;
-}
+    h1 {
+      font-size: clamp(38px, 8vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
 
-.subtitle{
-  color:#2a8d82;
-  font-weight:bold;
-  margin-bottom:20px;
-}
+    .subtitle {
+      color: #2a8d82;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-.intro{
-  max-width:650px;
-  color:#5d716f;
-  line-height:1.7;
-}
+    .intro {
+      max-width: 650px;
+      color: #5d716f;
+      line-height: 1.7;
+    }
 
-/* LANGUAGE */
+    /* Sections */
 
-.section{
-  margin-top:38px;
-}
+    .section {
+      margin-top: 38px;
+    }
 
-.section h2{
-  font-size:24px;
-  margin-bottom:8px;
-}
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
 
-.section-description{
-  color:#70817f;
-  margin-bottom:20px;
-}
+    .section-description {
+      color: #70817f;
+      margin-bottom: 20px;
+    }
 
-.language-buttons{
-  display:flex;
-  gap:10px;
-}
+    /* Language */
 
-.language{
-  padding:11px 18px;
-  border-radius:30px;
-  border:1px solid #bdd8d3;
-  background:white;
-  cursor:pointer;
-  font-weight:bold;
-}
+    .language-buttons {
+      display: flex;
+      gap: 10px;
+    }
 
-.language.active{
-  background:#123c3b;
-  color:white;
-}
+    .language {
+      padding: 11px 18px;
+      border-radius: 30px;
+      border: 1px solid #bdd8d3;
+      background: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-/* EXPERIENCE */
+    .language.active {
+      background: #123c3b;
+      color: white;
+    }
 
-.experience-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
+    /* Experience Modes */
 
-.experience{
-  background:white;
-  border:1px solid #e0e9e6;
-  border-radius:18px;
-  padding:22px;
-  cursor:pointer;
-  transition:.2s;
-}
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
 
-.experience:hover{
-  transform:translateY(-3px);
-  border-color:#7cc0b6;
-  box-shadow:0 8px 20px rgba(20,70,65,.08);
-}
+    .experience {
+      background: white;
+      border: 1px solid #e0e9e6;
+      border-radius: 18px;
+      padding: 22px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-.experience .icon{
-  font-size:27px;
-  margin-bottom:14px;
-}
+    .experience:hover {
+      transform: translateY(-3px);
+      border-color: #7cc0b6;
+      box-shadow: 0 8px 20px rgba(20, 70, 65, 0.08);
+    }
 
-.experience h3{
-  margin-bottom:6px;
-}
+    .experience .icon {
+      font-size: 27px;
+      margin-bottom: 14px;
+    }
 
-.experience p{
-  color:#70817f;
-  font-size:14px;
-}
+    .experience h3 {
+      margin-bottom: 6px;
+    }
 
-/* STORY OUTPUT */
+    .experience p {
+      color: #70817f;
+      font-size: 14px;
+    }
 
-.story-box{
-  margin-top:30px;
-  background:#e6f1ee;
-  border-radius:20px;
-  padding:28px;
-  display:none;
-}
+    /* Story Output */
 
-.story-box.show{
-  display:block;
-}
+    .story-box {
+      margin-top: 30px;
+      background: #e6f1ee;
+      border-radius: 20px;
+      padding: 28px;
+      display: none;
+    }
 
-.story-label{
-  color:#2a8d82;
-  font-size:11px;
-  letter-spacing:2px;
-  font-weight:bold;
-  margin-bottom:12px;
-}
+    .story-box.show {
+      display: block;
+    }
 
-.story-box h2{
-  margin-bottom:15px;
-}
+    .story-label {
+      color: #2a8d82;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
 
-.story-text{
-  line-height:1.8;
-  color:#385653;
-}
+    .story-box h2 {
+      margin-bottom: 15px;
+    }
 
-/* AI */
+    .story-text {
+      line-height: 1.8;
+      color: #385653;
+    }
 
-.ask-box{
-  margin-top:45px;
-  background:#123c3b;
-  color:white;
-  border-radius:22px;
-  padding:28px;
-}
+    /* Ask StoryLens */
 
-.ask-box h2{
-  margin-bottom:8px;
-}
+    .ask-box {
+      margin-top: 45px;
+      background: #123c3b;
+      color: white;
+      border-radius: 22px;
+      padding: 28px;
+    }
 
-.ask-box p{
-  color:#c8dcd8;
-  line-height:1.5;
-  margin-bottom:20px;
-}
+    .ask-box h2 {
+      margin-bottom: 8px;
+    }
 
-.question{
-  display:flex;
-  gap:8px;
-}
+    .ask-box p {
+      color: #c8dcd8;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
 
-.question input{
-  flex:1;
-  border:none;
-  border-radius:12px;
-  padding:14px;
-  font-size:15px;
-}
+    .question {
+      display: flex;
+      gap: 8px;
+    }
 
-.question button{
-  border:none;
-  border-radius:12px;
-  padding:14px 18px;
-  background:#74c4b7;
-  color:#103b38;
-  font-weight:bold;
-  cursor:pointer;
-}
+    .question input {
+      flex: 1;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+    }
 
-/* SOURCES */
+    .question button {
+      border: none;
+      border-radius: 12px;
+      padding: 14px 18px;
+      background: #74c4b7;
+      color: #103b38;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.sources{
-  margin:30px 0;
-  padding:22px;
-  border:1px solid #d9e5e1;
-  border-radius:18px;
-}
+    /* Sources */
 
-.sources h3{
-  margin-bottom:12px;
-}
+    .sources {
+      margin: 30px 0;
+      padding: 22px;
+      border: 1px solid #d9e5e1;
+      border-radius: 18px;
+    }
 
-.sources p{
-  color:#70817f;
-  font-size:14px;
-  line-height:1.6;
-}
+    .sources h3 {
+      margin-bottom: 12px;
+    }
 
-footer{
-  text-align:center;
-  color:#899895;
-  font-size:12px;
-  padding:35px 0;
-}
+    .sources p {
+      color: #70817f;
+      font-size: 14px;
+      line-height: 1.6;
+    }
 
-/* MOBILE */
+    footer {
+      text-align: center;
+      color: #899895;
+      font-size: 12px;
+      padding: 35px 0;
+    }
 
-@media(max-width:650px){
+    /* Mobile */
 
-  .experience-grid{
-    grid-template-columns:1fr;
-  }
+    @media(max-width: 650px) {
 
-  .question{
-    flex-direction:column;
-  }
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
 
-  .question button{
-    width:100%;
-  }
-}
+      .question {
+        flex-direction: column;
+      }
 
-</style>
+      .question button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-<nav>
+    <!-- Navigation -->
 
-  <div class="logo">
-    StoryLens <span>AI</span>
+    <nav>
+
+      <div class="logo">
+        StoryLens <span>AI</span>
+      </div>
+
+      <a class="back" href="index.html">
+        ← Back to Explore
+      </a>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+      <div class="place-type">
+        TAICHUNG OLD TOWN · TAIWAN
+      </div>
+
+      <h1>
+        Taichung<br>
+        Prefectural Hall
+      </h1>
+
+      <div class="subtitle">
+        Governance · Architecture · Urban Development
+      </div>
+
+      <p class="intro">
+        More than a historic building, Taichung Prefectural Hall
+        witnessed the transformation of Taichung into a modern city.
+        Choose how you would like StoryLens to tell its story.
+      </p>
+
+    </section>
+
+
+    <!-- Language -->
+
+    <section class="section">
+
+      <h2>Choose your language</h2>
+
+      <p class="section-description">
+        Experience local history in the language that feels most natural to you.
+      </p>
+
+      <div class="language-buttons">
+
+        <button class="language active">
+          English
+        </button>
+
+        <button class="language">
+          中文
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Experience Modes -->
+
+    <section class="section">
+
+      <h2>How would you like to explore?</h2>
+
+      <p class="section-description">
+        One place can tell many different stories.
+      </p>
+
+
+      <div class="experience-grid">
+
+        <div class="experience" onclick="showStory('quick')">
+
+          <div class="icon">⚡</div>
+
+          <h3>Quick Story</h3>
+
+          <p>I only have a minute.</p>
+
+        </div>
+
+
+        <div class="experience" onclick="showStory('story')">
+
+          <div class="icon">📖</div>
+
+          <h3>Story Mode</h3>
+
+          <p>Take me into the story.</p>
+
+        </div>
+
+
+        <div class="experience" onclick="showStory('deep')">
+
+          <div class="icon">🏛️</div>
+
+          <h3>Deep Dive</h3>
+
+          <p>Give me the historical context.</p>
+
+        </div>
+
+
+        <div class="experience" onclick="showStory('simple')">
+
+          <div class="icon">🌱</div>
+
+          <h3>Simple Mode</h3>
+
+          <p>Explain it in an easy way.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Story Output -->
+
+    <section id="storyBox" class="story-box">
+
+      <div class="story-label">
+        STORYLENS EXPERIENCE
+      </div>
+
+      <h2 id="storyTitle">
+        Your story
+      </h2>
+
+      <div id="storyText" class="story-text">
+      </div>
+
+    </section>
+
+
+    <!-- Ask StoryLens -->
+
+    <section class="ask-box">
+
+      <h2>Ask StoryLens</h2>
+
+      <p>
+        Curious about this place?
+        Ask a question and explore its story further.
+      </p>
+
+      <div class="question">
+
+        <input
+          type="text"
+          placeholder="Why is this place important?"
+        >
+
+        <button onclick="demoAI()">
+          Ask →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Trusted Sources -->
+
+    <section class="sources">
+
+      <h3>✓ Trusted Sources</h3>
+
+      <p>
+        StoryLens uses verified cultural and historical information
+        instead of generating historical facts from imagination.
+      </p>
+
+      <br>
+
+      <p>
+        <strong>
+          01 · Taichung City Government Cultural Affairs Bureau
+        </strong>
+        <br>
+        History of Taichung Prefectural Hall
+      </p>
+
+      <br>
+
+      <p>
+        <strong>
+          02 · Cultural Heritage Department of Taichung City
+        </strong>
+        <br>
+        National Monument Record: Taichung Prefectural Hall
+      </p>
+
+      <br>
+
+      <p style="font-size: 12px;">
+        Knowledge Base updated: September 2026
+      </p>
+
+    </section>
+
+
+    <footer>
+      StoryLens AI · ICIC 2026 Prototype
+    </footer>
+
   </div>
 
-  <a class="back" href="index.html">
-    ← Back to Explore
-  </a>
 
-</nav>
+  <script>
 
+    function showStory(mode) {
 
-<section class="hero">
+      const box = document.getElementById("storyBox");
+      const title = document.getElementById("storyTitle");
+      const text = document.getElementById("storyText");
 
-  <div class="place-type">
-    TAICHUNG OLD TOWN · TAIWAN
-  </div>
+      box.classList.add("show");
 
-  <h1>
-    Taichung<br>
-    Prefectural Hall
-  </h1>
 
-  <div class="subtitle">
-    Governance · Architecture · Urban Development
-  </div>
+      /* QUICK STORY */
 
-  <p class="intro">
-    More than a historic building, Taichung Prefectural Hall
-    witnessed the transformation of Taichung into a modern city.
-    Choose how you would like StoryLens to tell its story.
-  </p>
+      if (mode === "quick") {
 
-</section>
+        title.innerText = "Quick Story";
 
+        text.innerHTML = `
+          <p>
+            Taichung Prefectural Hall began its story in 1913,
+            when construction started on a new government office
+            for Taichung.
+          </p>
 
-<section class="section">
+          <br>
 
-  <h2>Choose your language</h2>
+          <p>
+            After Taiwan's local administrative system was reorganized
+            in 1920, the building became the seat of Taichung Prefecture,
+            which governed an area covering much of today's Taichung,
+            Changhua, and Nantou.
+          </p>
 
-  <p class="section-description">
-    Experience local history in the language that feels most natural to you.
-  </p>
+          <br>
 
-  <div class="language-buttons">
+          <p>
+            Expanded in several stages until 1934, the building witnessed
+            Taichung's growth as an important administrative center in
+            central Taiwan. Today, it is preserved as a National Monument.
+          </p>
+        `;
+      }
 
-    <button class="language active">
-      English
-    </button>
 
-    <button class="language">
-      中文
-    </button>
+      /* STORY MODE */
 
-  </div>
+      if (mode === "story") {
 
-</section>
+        title.innerText = "Story Mode";
 
+        text.innerHTML = `
+          <p>
+            Imagine standing on this street more than a century ago.
+            Taichung was changing rapidly, and a new government building
+            was beginning to rise at this very corner.
+          </p>
 
-<section class="section">
+          <br>
 
-  <h2>How would you like to explore?</h2>
+          <p>
+            Construction began in 1913. But the building you see today
+            did not appear all at once. As the city developed, the complex
+            continued to grow through several stages of expansion.
+          </p>
 
-  <p class="section-description">
-    One place can tell many different stories.
-  </p>
+          <br>
 
+          <p>
+            Then came 1920. Taiwan's local administrative system was
+            reorganized, and Taichung became the center of the newly
+            established Taichung Prefecture. The former government office
+            became Taichung Prefectural Hall.
+          </p>
 
-  <div class="experience-grid">
+          <br>
 
-    <div class="experience" onclick="showStory('quick')">
+          <p>
+            Government offices gathered around the city, people arrived,
+            and Taichung strengthened its role as a political, economic,
+            and cultural center of central Taiwan.
+          </p>
 
-      <div class="icon">⚡</div>
+          <br>
 
-      <h3>Quick Story</h3>
+          <p>
+            By 1934, the building had largely reached the form we recognize
+            today. More than a century later, its walls still tell a story
+            of how the city around them changed.
+          </p>
+        `;
+      }
 
-      <p>I only have a minute.</p>
 
-    </div>
+      /* DEEP DIVE */
 
+      if (mode === "deep") {
 
-    <div class="experience" onclick="showStory('story')">
+        title.innerText = "Deep Dive";
 
-      <div class="icon">📖</div>
+        text.innerHTML = `
+          <p>
+            The main construction of what is now Taichung Prefectural Hall
+            began in 1913 as the office of the Taichung Chō administration.
+            Its first phase was completed in 1914, followed by several
+            stages of expansion. By 1934, the complex had reached its
+            principal present-day scale.
+          </p>
 
-      <h3>Story Mode</h3>
+          <br>
 
-      <p>Take me into the story.</p>
+          <p>
+            A major turning point came in 1920, when the Japanese colonial
+            government reorganized Taiwan's local administrative divisions.
+            Taichung Prefecture was established, covering areas corresponding
+            broadly to present-day Taichung City, Changhua County, and
+            Nantou County.
+          </p>
 
-    </div>
+          <br>
 
+          <p>
+            As the prefectural capital, Taichung attracted administrative
+            institutions and population, strengthening its position as a
+            political, economic, and cultural center in central Taiwan.
+          </p>
 
-    <div class="experience" onclick="showStory('deep')">
+          <br>
 
-      <div class="icon">🏛️</div>
+          <p>
+            The building was designed by Moriyama Matsunosuke, an architect
+            and engineer who worked for the Government-General of Taiwan.
+            Its corner-site composition places the main entrance at the
+            intersection, while two wings extend backward from the central
+            section. Its architecture reflects Western historicist and
+            neoclassical influences used in government buildings of the period.
+          </p>
 
-      <h3>Deep Dive</h3>
+          <br>
 
-      <p>Give me the historical context.</p>
+          <p>
+            After World War II, the building continued to serve governmental
+            functions as offices of the Taichung City Government. It was
+            later designated a National Monument, preserving an important
+            physical record of Taichung's administrative and urban history.
+          </p>
+        `;
+      }
 
-    </div>
 
+      /* SIMPLE MODE */
 
-    <div class="experience" onclick="showStory('simple')">
+      if (mode === "simple") {
 
-      <div class="icon">🌱</div>
+        title.innerText = "Simple Mode";
 
-      <h3>Simple Mode</h3>
+        text.innerHTML = `
+          <p>
+            This building is more than 100 years old.
+          </p>
 
-      <p>Explain it in an easy way.</p>
+          <br>
 
-    </div>
+          <p>
+            Construction began in 1913. At first, it was used as a local
+            government office. In 1920, Taichung became the center of a
+            much larger administrative region called Taichung Prefecture,
+            and this building became its main government office.
+          </p>
 
-  </div>
+          <br>
 
-</section>
+          <p>
+            The building was expanded several times as the city grew.
+            By 1934, it looked much closer to the building we see today.
+          </p>
 
+          <br>
 
-<section id="storyBox" class="story-box">
+          <p>
+            That is why Taichung Prefectural Hall matters: it helps us see
+            how Taichung changed and developed over more than a century.
+          </p>
+        `;
+      }
 
-  <div class="story-label">
-    STORYLENS EXPERIENCE
-  </div>
 
-  <h2 id="storyTitle">
-    Your story
-  </h2>
+      box.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
 
-  <div id="storyText" class="story-text"></div>
+    }
 
-</section>
 
+    /* AI DEMO - WILL BE CONNECTED LATER */
 
-<section class="ask-box">
+    function demoAI() {
 
-  <h2>Ask StoryLens</h2>
+      alert(
+        "Ask StoryLens will become interactive when we connect the trusted cultural knowledge base and AI."
+      );
 
-  <p>
-    Curious about this place?
-    Ask a question and explore its story further.
-  </p>
+    }
 
-  <div class="question">
-
-    <input
-      type="text"
-      placeholder="Why is this place important?"
-    >
-
-    <button onclick="demoAI()">
-      Ask →
-    </button>
-
-  </div>
-
-</section>
-
-
-<section class="sources">
-
-  <h3>✓ Trusted Sources</h3>
-
-  <p>
-    StoryLens is designed to generate stories from verified
-    cultural and historical sources. Source information for this
-    prototype will be added to the knowledge base.
-  </p>
-
-</section>
-
-
-<footer>
-  StoryLens AI · ICIC 2026 Prototype
-</footer>
-
-</div>
-
-
-<script>
-
-function showStory(mode){
-
-  const box = document.getElementById("storyBox");
-  const title = document.getElementById("storyTitle");
-  const text = document.getElementById("storyText");
-
-  box.classList.add("show");
-
-  if(mode === "quick"){
-    title.innerText = "Quick Story";
-
-    text.innerHTML =
-    "You are standing in front of one of Taichung's historic civic buildings. StoryLens will soon use verified local sources to give you a one-minute introduction to the history and significance of this place.";
-  }
-
-  if(mode === "story"){
-    title.innerText = "Story Mode";
-
-    text.innerHTML =
-    "Imagine standing here decades ago, as Taichung was changing around you. StoryLens will transform verified historical information into an immersive narrative while keeping the facts connected to their original sources.";
-  }
-
-  if(mode === "deep"){
-    title.innerText = "Deep Dive";
-
-    text.innerHTML =
-    "Deep Dive will provide additional historical context, including the development of the city, the role of the building, architectural information, and its relationship with the surrounding urban landscape.";
-  }
-
-  if(mode === "simple"){
-    title.innerText = "Simple Mode";
-
-    text.innerHTML =
-    "This mode will explain the history of the site using clear and accessible language, making local culture easier to understand for visitors who may be unfamiliar with Taiwanese history.";
-  }
-
-  box.scrollIntoView({
-    behavior:"smooth",
-    block:"center"
-  });
-
-}
-
-
-function demoAI(){
-
-  alert(
-    "Ask StoryLens will become interactive when we connect the trusted cultural knowledge base and AI."
-  );
-
-}
-
-</script>
+  </script>
 
 </body>
 </html>
