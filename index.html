@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>StoryLens AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f4ec;
+      color: #123c3b;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    /* Navigation */
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0 30px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: #45a99d;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 7px 12px;
+      border: 1px solid #b8d8d2;
+      border-radius: 30px;
+      background: #ffffffaa;
+    }
+
+    /* Hero */
+
+    .hero {
+      text-align: center;
+      padding: 55px 15px 45px;
+    }
+
+    .eyebrow {
+      color: #2a8d82;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 9vw, 78px);
+      line-height: 0.95;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: #45a99d;
+    }
+
+    .tagline {
+      font-size: clamp(20px, 4vw, 30px);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .description {
+      max-width: 650px;
+      margin: auto;
+      color: #58706d;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* Divider */
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: #45a99d;
+      margin: 38px auto;
+      border-radius: 10px;
+    }
+
+    /* Places */
+
+    .places-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .places-title h2 {
+      font-size: 27px;
+      margin-bottom: 9px;
+    }
+
+    .places-title p {
+      color: #6d817e;
+    }
+
+    .places {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding-bottom: 45px;
+    }
+
+    .place-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 22px;
+      cursor: pointer;
+      border: 1px solid #e2ebe8;
+      transition: 0.25s;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .place-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(20, 70, 65, 0.12);
+      border-color: #8ccbc2;
+    }
+
+    .icon {
+      font-size: 36px;
+      margin-bottom: 22px;
+    }
+
+    .place-card h3 {
+      font-size: 20px;
+      margin-bottom: 9px;
+    }
+
+    .theme {
+      color: #2a8d82;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .explore {
+      margin-top: auto;
+      color: #123c3b;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* Philosophy */
+
+    .philosophy {
+      text-align: center;
+      background: #e5f2ee;
+      border-radius: 22px;
+      padding: 30px 20px;
+      margin-bottom: 30px;
+    }
+
+    .philosophy p {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      color: #84918f;
+      font-size: 12px;
+      padding: 15px 0 30px;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 18px;
+      }
+
+      nav {
+        padding-bottom: 10px;
+      }
+
+      .hero {
+        padding: 45px 5px 35px;
+      }
+
+      .places {
+        grid-template-columns: 1fr;
+      }
+
+      .place-card {
+        min-height: 175px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <nav>
+      <div class="logo">
+        StoryLens <span>AI</span>
+      </div>
+
+      <div class="badge">
+        Taichung · Taiwan
+      </div>
+    </nav>
+
+
+    <main>
+
+      <section class="hero">
+
+        <div class="eyebrow">
+          AI × CULTURE × TRAVEL
+        </div>
+
+        <h1>
+          Every place has<br>
+          <span>a story.</span>
+        </h1>
+
+        <div class="tagline">
+          Preserve Locally. Communicate Globally.
+        </div>
+
+        <p class="description">
+          Discover the stories behind Taichung's historic places
+          through AI-powered cultural storytelling.
+          Explore local history in a way that is personal,
+          accessible, and meaningful.
+        </p>
+
+        <div class="divider"></div>
+
+      </section>
+
+
+      <section>
+
+        <div class="places-title">
+
+          <h2>Where would you like to explore?</h2>
+
+          <p>
+            Three places. Three perspectives. One city.
+          </p>
+
+        </div>
+
+
+        <div class="places">
+
+          <div class="place-card">
+
+            <div class="icon">🏛️</div>
+
+            <h3>Taichung Prefectural Hall</h3>
+
+            <div class="theme">
+              GOVERNANCE · URBAN DEVELOPMENT
+            </div>
+
+            <div class="explore">
+              Explore this story →
+            </div>
+
+          </div>
+
+
+          <div class="place-card">
+
+            <div class="icon">🚂</div>
+
+            <h3>Taichung Railway Station</h3>
+
+            <div class="theme">
+              TRANSPORTATION · MODERNIZATION
+            </div>
+
+            <div class="explore">
+              Explore this story →
+            </div>
+
+          </div>
+
+
+          <div class="place-card">
+
+            <div class="icon">🌳</div>
+
+            <h3>Taichung Park</h3>
+
+            <div class="theme">
+              EVERYDAY LIFE · COLLECTIVE MEMORY
+            </div>
+
+            <div class="explore">
+              Explore this story →
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="philosophy">
+
+        <p>
+          “AI should tell stories,<br>
+          not invent history.”
+        </p>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+      StoryLens AI · Prototype for ICIC 2026
+    </footer>
+
+  </div>
+
+</body>
+</html>
