@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Taichung Railway Station | StoryLens AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: #f7f4ec;
+      color: #123c3b;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 28px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #45a99d;
+    }
+
+    .back {
+      color: #496966;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 35px 0 38px;
+    }
+
+    .place-type {
+      color: #2a8d82;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: #2a8d82;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      max-width: 680px;
+      color: #5d716f;
+      line-height: 1.8;
+    }
+
+    .section {
+      margin-top: 38px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .section-description {
+      color: #70817f;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .language-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .language {
+      padding: 11px 18px;
+      border-radius: 30px;
+      border: 1px solid #bdd8d3;
+      background: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .language.active {
+      background: #123c3b;
+      color: white;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .experience {
+      background: white;
+      border: 1px solid #e0e9e6;
+      border-radius: 18px;
+      padding: 22px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .experience:hover {
+      transform: translateY(-3px);
+      border-color: #7cc0b6;
+      box-shadow: 0 8px 20px rgba(20, 70, 65, 0.08);
+    }
+
+    .experience .icon {
+      font-size: 27px;
+      margin-bottom: 14px;
+    }
+
+    .experience h3 {
+      margin-bottom: 6px;
+    }
+
+    .experience p {
+      color: #70817f;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .story-box {
+      margin-top: 30px;
+      background: #e6f1ee;
+      border-radius: 20px;
+      padding: 28px;
+      display: none;
+    }
+
+    .story-box.show {
+      display: block;
+    }
+
+    .story-label {
+      color: #2a8d82;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .story-box h2 {
+      margin-bottom: 15px;
+    }
+
+    .story-text {
+      line-height: 1.8;
+      color: #385653;
+    }
+
+    .ask-box {
+      margin-top: 45px;
+      background: #123c3b;
+      color: white;
+      border-radius: 22px;
+      padding: 28px;
+    }
+
+    .ask-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: #74c4b7;
+      margin-bottom: 10px;
+    }
+
+    .ask-box h2 {
+      margin-bottom: 8px;
+      font-size: 27px;
+    }
+
+    .ask-intro {
+      color: #c8dcd8;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      display: flex;
+      gap: 8px;
+    }
+
+    .question input {
+      flex: 1;
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+    }
+
+    .question button {
+      border: none;
+      border-radius: 12px;
+      padding: 14px 20px;
+      background: #74c4b7;
+      color: #103b38;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .question button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .suggested-title {
+      margin-top: 18px;
+      margin-bottom: 9px;
+      color: #b9d4cf;
+      font-size: 12px;
+    }
+
+    .suggested-questions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .suggested {
+      background: transparent;
+      color: #dcebe8;
+      border: 1px solid #50736f;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .suggested:hover {
+      background: #204d49;
+    }
+
+    .coming-soon {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      color: #123c3b;
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .coming-soon.show {
+      display: block;
+    }
+
+    .coming-label {
+      color: #2a8d82;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .coming-soon p {
+      color: #48625f;
+      line-height: 1.75;
+    }
+
+    .responsible-ai {
+      margin-top: 22px;
+      border: 1px solid #426762;
+      border-radius: 14px;
+      padding: 15px;
+      color: #c8dcd8;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .responsible-ai strong {
+      color: white;
+    }
+
+    .sources {
+      margin: 30px 0;
+      padding: 22px;
+      border: 1px solid #d9e5e1;
+      border-radius: 18px;
+    }
+
+    .sources h3 {
+      margin-bottom: 12px;
+    }
+
+    .sources > p {
+      color: #70817f;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .source-item {
+      margin-top: 18px;
+    }
+
+    .source-item p {
+      color: #70817f;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .source-number {
+      color: #2a8d82;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #899895;
+      font-size: 12px;
+      padding: 35px 0;
+    }
+
+    @media (max-width: 650px) {
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .question {
+        flex-direction: column;
+      }
+
+      .question button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <nav>
+      <div class="logo">StoryLens <span>AI</span></div>
+      <a id="backButton" class="back" href="index.html">← Back to Explore</a>
+    </nav>
+
+    <section class="hero">
+
+      <div id="placeType" class="place-type">
+        TAICHUNG OLD TOWN · TAIWAN
+      </div>
+
+      <h1 id="placeTitle">
+        Taichung<br>Railway Station
+      </h1>
+
+      <div id="subtitle" class="subtitle">
+        Transportation · Modernization · Urban Memory
+      </div>
+
+      <p id="intro" class="intro">
+        A railway station is more than a place where trains stop.
+        For more than a century, Taichung Railway Station has connected
+        people, places, and different stages of the city's development.
+        Choose how you would like StoryLens to tell its story.
+      </p>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2 id="languageTitle">Choose your language</h2>
+
+      <p id="languageDescription" class="section-description">
+        Experience local history in the language that feels most natural to you.
+      </p>
+
+      <div class="language-buttons">
+
+        <button
+          id="englishButton"
+          class="language active"
+          onclick="setLanguage('en')">
+          English
+        </button>
+
+        <button
+          id="chineseButton"
+          class="language"
+          onclick="setLanguage('zh')">
+          中文
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2 id="exploreTitle">
+        How would you like to explore?
+      </h2>
+
+      <p id="exploreDescription" class="section-description">
+        One station can tell many different stories.
+      </p>
+
+      <div class="experience-grid">
+
+        <div class="experience" onclick="showStory('quick')">
+          <div class="icon">⚡</div>
+          <h3 id="quickTitle">Quick Story</h3>
+          <p id="quickDescription">I only have a minute.</p>
+        </div>
+
+        <div class="experience" onclick="showStory('story')">
+          <div class="icon">📖</div>
+          <h3 id="storyModeTitle">Story Mode</h3>
+          <p id="storyModeDescription">Take me into the story.</p>
+        </div>
+
+        <div class="experience" onclick="showStory('deep')">
+          <div class="icon">🚂</div>
+          <h3 id="deepTitle">Deep Dive</h3>
+          <p id="deepDescription">Give me the historical context.</p>
+        </div>
+
+        <div class="experience" onclick="showStory('simple')">
+          <div class="icon">🌱</div>
+          <h3 id="simpleTitle">Simple Mode</h3>
+          <p id="simpleDescription">Explain it in an easy way.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section id="storyBox" class="story-box">
+
+      <div id="storyLabel" class="story-label">
+        STORYLENS EXPERIENCE
+      </div>
+
+      <h2 id="storyTitle">
+        Your story
+      </h2>
+
+      <div id="storyText" class="story-text"></div>
+
+    </section>
+
+
+    <section class="ask-box">
+
+      <div id="askLabel" class="ask-label">
+        AI CULTURAL GUIDE
+      </div>
+
+      <h2 id="askTitle">
+        Ask StoryLens
+      </h2>
+
+      <p id="askIntro" class="ask-intro">
+        Curious about this station? StoryLens AI will soon answer questions
+        using a trusted cultural and historical knowledge base.
+      </p>
+
+      <div class="question">
+
+        <input
+          id="questionInput"
+          type="text"
+          placeholder="Why is this station important?"
+          onkeydown="handleEnter(event)"
+        >
+
+        <button id="askButton" onclick="showComingSoon()">
+          Ask →
+        </button>
+
+      </div>
+
+      <div id="suggestedTitle" class="suggested-title">
+        TRY ASKING
+      </div>
+
+      <div class="suggested-questions">
+
+        <button
+          id="suggested1"
+          class="suggested"
+          onclick="askSuggested('Why is Taichung Railway Station important?')">
+          Why is this station important?
+        </button>
+
+        <button
+          id="suggested2"
+          class="suggested"
+          onclick="askSuggested('When was Taichung Railway Station built?')">
+          When was it built?
+        </button>
+
+        <button
+          id="suggested3"
+          class="suggested"
+          onclick="askSuggested('Why are there different generations of Taichung Railway Station?')">
+          Why are there different generations?
+        </button>
+
+      </div>
+
+
+      <div id="comingSoon" class="coming-soon">
+
+        <div id="comingLabel" class="coming-label">
+          STORYLENS AI · NEXT STEP
+        </div>
+
+        <p id="comingText">
+          The Taichung Railway Station knowledge base is being connected
+          to StoryLens AI. The storytelling experiences above are already
+          available, while free-form AI questions will be enabled in the next step.
+        </p>
+
+      </div>
+
+
+      <div id="responsibleAI" class="responsible-ai">
+
+        <strong id="responsibleTitle">
+          Responsible AI:
+        </strong>
+
+        <span id="responsibleText">
+          StoryLens retrieves trusted cultural knowledge before generating
+          an answer. When reliable information is unavailable, it should
+          clearly say so rather than invent historical facts.
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <section class="sources">
+
+      <h3 id="sourcesTitle">
+        ✓ Trusted Sources
+      </h3>
+
+      <p id="sourcesDescription">
+        StoryLens uses verified cultural and historical information instead
+        of generating historical facts from imagination.
+      </p>
+
+      <div class="source-item">
+        <p>
+          <span class="source-number">01 ·</span>
+          <strong>Taichung City Cultural Heritage Department</strong>
+          <br>
+          National Monument Record: Taichung Railway Station
+        </p>
+      </div>
+
+      <div class="source-item">
+        <p>
+          <span class="source-number">02 ·</span>
+          <strong>Taichung City Government Cultural Affairs Bureau</strong>
+          <br>
+          Cultural and historical information about Taichung Railway Station
+        </p>
+      </div>
+
+      <div class="source-item">
+        <p id="knowledgeUpdate" style="font-size: 12px;">
+          Knowledge Base updated: September 2026
+        </p>
+      </div>
+
+    </section>
+
+
+    <footer>
+      StoryLens AI · ICIC 2026 Prototype
+    </footer>
+
+  </div>
+
+
+  <script>
+
+    let currentLanguage = "en";
+    let currentStoryMode = null;
+
+
+    const interfaceText = {
+
+      en: {
+
+        back: "← Back to Explore",
+
+        placeType: "TAICHUNG OLD TOWN · TAIWAN",
+
+        placeTitle: "Taichung<br>Railway Station",
+
+        subtitle:
+          "Transportation · Modernization · Urban Memory",
+
+        intro:
+          "A railway station is more than a place where trains stop. For more than a century, Taichung Railway Station has connected people, places, and different stages of the city's development. Choose how you would like StoryLens to tell its story.",
+
+        languageTitle:
+          "Choose your language",
+
+        languageDescription:
+          "Experience local history in the language that feels most natural to you.",
+
+        exploreTitle:
+          "How would you like to explore?",
+
+        exploreDescription:
+          "One station can tell many different stories.",
+
+        quickTitle:
+          "Quick Story",
+
+        quickDescription:
+          "I only have a minute.",
+
+        storyModeTitle:
+          "Story Mode",
+
+        storyModeDescription:
+          "Take me into the story.",
+
+        deepTitle:
+          "Deep Dive",
+
+        deepDescription:
+          "Give me the historical context.",
+
+        simpleTitle:
+          "Simple Mode",
+
+        simpleDescription:
+          "Explain it in an easy way.",
+
+        storyLabel:
+          "STORYLENS EXPERIENCE",
+
+        askLabel:
+          "AI CULTURAL GUIDE",
+
+        askTitle:
+          "Ask StoryLens",
+
+        askIntro:
+          "Curious about this station? StoryLens AI will soon answer questions using a trusted cultural and historical knowledge base.",
+
+        placeholder:
+          "Why is this station important?",
+
+        askButton:
+          "Ask →",
+
+        suggestedTitle:
+          "TRY ASKING",
+
+        suggested1:
+          "Why is this station important?",
+
+        suggested2:
+          "When was it built?",
+
+        suggested3:
+          "Why are there different generations?",
+
+        comingLabel:
+          "STORYLENS AI · NEXT STEP",
+
+        comingText:
+          "The Taichung Railway Station knowledge base is being connected to StoryLens AI. The storytelling experiences above are already available, while free-form AI questions will be enabled in the next step.",
+
+        responsibleTitle:
+          "Responsible AI:",
+
+        responsibleText:
+          " StoryLens retrieves trusted cultural knowledge before generating an answer. When reliable information is unavailable, it should clearly say so rather than invent historical facts.",
+
+        sourcesTitle:
+          "✓ Trusted Sources",
+
+        sourcesDescription:
+          "StoryLens uses verified cultural and historical information instead of generating historical facts from imagination.",
+
+        knowledgeUpdate:
+          "Knowledge Base updated: September 2026"
+      },
+
+
+      zh: {
+
+        back: "← 返回探索",
+
+        placeType: "臺中舊城 · 臺灣",
+
+        placeTitle: "臺中車站",
+
+        subtitle:
+          "交通 · 現代化 · 城市記憶",
+
+        intro:
+          "車站不只是火車停靠的地方。一百多年來，臺中車站連結了不同的人、地方，也見證城市在不同時代的發展。選擇你喜歡的方式，讓 StoryLens 帶你認識這座車站的故事。",
+
+        languageTitle:
+          "選擇你的語言",
+
+        languageDescription:
+          "用最自然的語言，走進一座城市的歷史。",
+
+        exploreTitle:
+          "你想怎麼認識這個地方？",
+
+        exploreDescription:
+          "同一座車站，也可以有不同的閱讀方式。",
+
+        quickTitle:
+          "快速故事",
+
+        quickDescription:
+          "我只有一分鐘。",
+
+        storyModeTitle:
+          "故事模式",
+
+        storyModeDescription:
+          "帶我走進它的故事。",
+
+        deepTitle:
+          "深度探索",
+
+        deepDescription:
+          "我想了解完整的歷史脈絡。",
+
+        simpleTitle:
+          "簡單模式",
+
+        simpleDescription:
+          "用容易理解的方式告訴我。",
+
+        storyLabel:
+          "STORYLENS 故事體驗",
+
+        askLabel:
+          "AI 文化嚮導",
+
+        askTitle:
+          "問問 StoryLens",
+
+        askIntro:
+          "對這座車站感到好奇嗎？StoryLens AI 即將能依據可信的文化與歷史知識庫回答你的問題。",
+
+        placeholder:
+          "為什麼臺中車站很重要？",
+
+        askButton:
+          "提問 →",
+
+        suggestedTitle:
+          "你可以問",
+
+        suggested1:
+          "為什麼臺中車站很重要？",
+
+        suggested2:
+          "臺中車站是什麼時候興建的？",
+
+        suggested3:
+          "為什麼臺中車站有不同世代？",
+
+        comingLabel:
+          "STORYLENS AI · 下一步",
+
+        comingText:
+          "臺中車站的可信知識庫正在與 StoryLens AI 連接中。目前你已經可以體驗上方的多種故事模式，自由 AI 提問功能將在下一步啟用。",
+
+        responsibleTitle:
+          "負責任的 AI：",
+
+        responsibleText:
+          " StoryLens 會先依據可信的文化知識，再生成回答。當現有資料不足時，它會明確說明，而不是自行虛構歷史。",
+
+        sourcesTitle:
+          "✓ 可信資料來源",
+
+        sourcesDescription:
+          "StoryLens 使用經過確認的文化與歷史資訊，而不是憑空生成歷史事實。",
+
+        knowledgeUpdate:
+          "知識庫更新：2026 年 9 月"
+      }
+
+    };
+
+
+    const stories = {
+
+      en: {
+
+        quick: {
+          title: "Quick Story",
+          text: `
+            <p>Taichung Railway Station was established in 1905, during a period when railway transportation was reshaping movement across Taiwan.</p><br>
+
+            <p>After the island's north-south trunk railway was completed in 1908, Taichung became increasingly connected to other regions.</p><br>
+
+            <p>The second-generation station building was completed in 1917. More than a century later, the historic station remains an important record of Taichung's railway and urban development.</p>
+          `
+        },
+
+        story: {
+          title: "Story Mode",
+          text: `
+            <p>Imagine arriving in Taichung more than a century ago.</p><br>
+
+            <p>Before highways, high-speed rail, and today's transportation networks, the railway was transforming how people moved between cities. Taichung Railway Station was established in 1905, placing the growing city within this new network of movement.</p><br>
+
+            <p>In 1908, Taiwan's north-south trunk railway was completed. Trains connected Taichung more closely with places to the north and south, while railway facilities around the station continued to develop.</p><br>
+
+            <p>By 1917, a new second-generation station building had been completed. Its red-brick architecture became one of the city's recognizable landmarks.</p><br>
+
+            <p>Over the following century, transportation changed again and again. A third-generation elevated station entered service in 2016, while the historic station was preserved.</p><br>
+
+            <p>Standing here today, you are not looking at only one moment in history. You are looking at layers of a city learning how to move.</p>
+          `
+        },
+
+        deep: {
+          title: "Deep Dive",
+          text: `
+            <p>Taichung Railway Station was established in 1905. Its development formed part of the expansion of Taiwan's railway network during the Japanese colonial period.</p><br>
+
+            <p>The north-south trunk railway was completed in 1908, strengthening railway connections between Taichung and other regions. Railway transportation became closely connected with the city's economic activity and urban development.</p><br>
+
+            <p>The second-generation Taichung Station, then known as Taichung-eki, was completed in March 1917. It was designed by the engineering section of the Railway Department of the Government-General of Taiwan.</p><br>
+
+            <p>The historic station is characterized by a red-brick exterior, a Western-influenced architectural composition, and a prominent central section. Official cultural heritage records describe the building as reflecting Renaissance-inspired railway architecture of the period.</p><br>
+
+            <p>Beyond transportation, the station also functioned as an important urban space for welcoming visitors and holding public activities.</p><br>
+
+            <p>The historic station received heritage designation in 1995 and is now recognized as a National Monument. In October 2016, the first stage of Taichung's elevated railway project opened and the third-generation station entered service.</p><br>
+
+            <p>Together, the preserved railway structures and newer station reveal different stages in the development of Taichung's transportation landscape.</p>
+          `
+        },
+
+        simple: {
+          title: "Simple Mode",
+          text: `
+            <p>Taichung Railway Station has a history of more than 100 years.</p><br>
+
+            <p>The station was first established in 1905. As Taiwan's railway system developed, trains made it easier for people and goods to travel between Taichung and other places.</p><br>
+
+            <p>The historic station building you can still see today was completed in 1917.</p><br>
+
+            <p>Transportation later changed, so a newer elevated station opened in 2016. The older station was preserved because it is an important part of Taichung's history.</p><br>
+
+            <p>That is why this place is special: different generations of railway history can be seen in the same area.</p>
+          `
+        }
+
+      },
+
+
+      zh: {
+
+        quick: {
+          title: "快速故事",
+          text: `
+            <p>臺中車站創設於 1905 年，當時鐵路交通正逐漸改變臺灣各地之間的移動方式。</p><br>
+
+            <p>1908 年縱貫鐵路全線通車後，臺中與其他地區的交通連結更加緊密。</p><br>
+
+            <p>1917 年，第二代臺中車站完工。一百多年後，這座歷史車站仍保存著臺中鐵路與都市發展的重要記憶。</p>
+          `
+        },
+
+        story: {
+          title: "故事模式",
+          text: `
+            <p>想像一下，一百多年前來到臺中。</p><br>
+
+            <p>那是一個還沒有高速公路、高鐵，也沒有今日交通網絡的年代。鐵路的出現，正在重新改變人們往返城市之間的方式。1905 年，臺中車站創設，這座正在發展中的城市也逐漸進入新的交通網絡。</p><br>
+
+            <p>1908 年，臺灣縱貫鐵路全線通車。火車讓臺中與南北各地的聯繫更加緊密，車站周邊的鐵道設施也持續發展。</p><br>
+
+            <p>到了 1917 年，第二代臺中車站完工。紅磚外觀逐漸成為城市裡辨識度很高的地標。</p><br>
+
+            <p>接下來的一百年間，交通方式再次不斷改變。2016 年，第三代高架車站啟用，而歷史站體則被保存下來。</p><br>
+
+            <p>所以今天站在這裡，我們看到的並不只是一個年代的車站，而是一座城市如何一次又一次改變移動方式的痕跡。</p>
+          `
+        },
+
+        deep: {
+          title: "深度探索",
+          text: `
+            <p>臺中車站創設於 1905 年，其發展與日治時期臺灣鐵路網絡的擴張密切相關。</p><br>
+
+            <p>1908 年縱貫鐵路全線通車，使臺中與其他地區之間的鐵路連結更加緊密。鐵路交通也逐漸與臺中的經濟活動及都市發展產生密切關係。</p><br>
+
+            <p>第二代臺中車站當時稱為「臺中驛」，於 1917 年 3 月完工，由臺灣總督府鐵道部工務課設計。</p><br>
+
+            <p>歷史站體具有紅磚外觀與西式建築構成。官方文化資產資料將其描述為帶有西方文藝復興式驛站建築的特色。</p><br>
+
+            <p>除了交通功能之外，臺中車站也曾是迎送賓客與舉行公共活動的重要城市空間。</p><br>
+
+            <p>歷史站體於 1995 年獲古蹟指定，目前為國定古蹟。2016 年 10 月，臺中鐵路高架化第一階段通車，第三代臺中車站開始營運。</p><br>
+
+            <p>今日保存下來的鐵道設施與新車站，共同呈現臺中不同階段的交通發展歷程。</p>
+          `
+        },
+
+        simple: {
+          title: "簡單模式",
+          text: `
+            <p>臺中車站已經有超過一百年的歷史。</p><br>
+
+            <p>最早的車站創設於 1905 年。隨著臺灣鐵路逐漸發展，火車讓人和貨物更容易往返臺中與其他地方。</p><br>
+
+            <p>今天仍然可以看到的歷史站體，主要是 1917 年完工的第二代臺中車站。</p><br>
+
+            <p>後來交通需求改變，2016 年新的高架車站開始營運，而舊車站則被保存下來。</p><br>
+
+            <p>這個地方特別之處就在於：我們可以在同一個區域，看見不同時代留下來的鐵路歷史。</p>
+          `
+        }
+
+      }
+
+    };
+
+
+    function setLanguage(language) {
+
+      currentLanguage = language;
+
+      const text = interfaceText[language];
+
+      document.documentElement.lang =
+        language === "zh" ? "zh-Hant" : "en";
+
+      document.getElementById("englishButton")
+        .classList.toggle("active", language === "en");
+
+      document.getElementById("chineseButton")
+        .classList.toggle("active", language === "zh");
+
+
+      document.getElementById("backButton").innerText =
+        text.back;
+
+      document.getElementById("placeType").innerText =
+        text.placeType;
+
+      document.getElementById("placeTitle").innerHTML =
+        text.placeTitle;
+
+      document.getElementById("subtitle").innerText =
+        text.subtitle;
+
+      document.getElementById("intro").innerText =
+        text.intro;
+
+      document.getElementById("languageTitle").innerText =
+        text.languageTitle;
+
+      document.getElementById("languageDescription").innerText =
+        text.languageDescription;
+
+      document.getElementById("exploreTitle").innerText =
+        text.exploreTitle;
+
+      document.getElementById("exploreDescription").innerText =
+        text.exploreDescription;
+
+      document.getElementById("quickTitle").innerText =
+        text.quickTitle;
+
+      document.getElementById("quickDescription").innerText =
+        text.quickDescription;
+
+      document.getElementById("storyModeTitle").innerText =
+        text.storyModeTitle;
+
+      document.getElementById("storyModeDescription").innerText =
+        text.storyModeDescription;
+
+      document.getElementById("deepTitle").innerText =
+        text.deepTitle;
+
+      document.getElementById("deepDescription").innerText =
+        text.deepDescription;
+
+      document.getElementById("simpleTitle").innerText =
+        text.simpleTitle;
+
+      document.getElementById("simpleDescription").innerText =
+        text.simpleDescription;
+
+      document.getElementById("storyLabel").innerText =
+        text.storyLabel;
+
+      document.getElementById("askLabel").innerText =
+        text.askLabel;
+
+      document.getElementById("askTitle").innerText =
+        text.askTitle;
+
+      document.getElementById("askIntro").innerText =
+        text.askIntro;
+
+      document.getElementById("questionInput").placeholder =
+        text.placeholder;
+
+      document.getElementById("askButton").innerText =
+        text.askButton;
+
+      document.getElementById("suggestedTitle").innerText =
+        text.suggestedTitle;
+
+      document.getElementById("suggested1").innerText =
+        text.suggested1;
+
+      document.getElementById("suggested2").innerText =
+        text.suggested2;
+
+      document.getElementById("suggested3").innerText =
+        text.suggested3;
+
+      document.getElementById("comingLabel").innerText =
+        text.comingLabel;
+
+      document.getElementById("comingText").innerText =
+        text.comingText;
+
+      document.getElementById("responsibleTitle").innerText =
+        text.responsibleTitle;
+
+      document.getElementById("responsibleText").innerText =
+        text.responsibleText;
+
+      document.getElementById("sourcesTitle").innerText =
+        text.sourcesTitle;
+
+      document.getElementById("sourcesDescription").innerText =
+        text.sourcesDescription;
+
+      document.getElementById("knowledgeUpdate").innerText =
+        text.knowledgeUpdate;
+
+
+      if (currentStoryMode) {
+        showStory(currentStoryMode, false);
+      }
+
+      document.getElementById("comingSoon")
+        .classList.remove("show");
+    }
+
+
+    function showStory(mode, shouldScroll = true) {
+
+      currentStoryMode = mode;
+
+      const story =
+        stories[currentLanguage][mode];
+
+      const box =
+        document.getElementById("storyBox");
+
+      document.getElementById("storyTitle").innerText =
+        story.title;
+
+      document.getElementById("storyText").innerHTML =
+        story.text;
+
+      box.classList.add("show");
+
+      if (shouldScroll) {
+        box.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
+    }
+
+
+    function askSuggested(englishQuestion) {
+
+      let question = englishQuestion;
+
+      if (currentLanguage === "zh") {
+
+        if (
+          englishQuestion ===
+          "Why is Taichung Railway Station important?"
+        ) {
+          question =
+            "為什麼臺中車站很重要？";
+        }
+
+        if (
+          englishQuestion ===
+          "When was Taichung Railway Station built?"
+        ) {
+          question =
+            "臺中車站是什麼時候興建的？";
+        }
+
+        if (
+          englishQuestion ===
+          "Why are there different generations of Taichung Railway Station?"
+        ) {
+          question =
+            "為什麼臺中車站有不同世代？";
+        }
+      }
+
+      document.getElementById("questionInput").value =
+        question;
+
+      showComingSoon();
+    }
+
+
+    function handleEnter(event) {
+
+      if (event.key === "Enter") {
+        showComingSoon();
+      }
+    }
+
+
+    function showComingSoon() {
+
+      const box =
+        document.getElementById("comingSoon");
+
+      box.classList.add("show");
+
+      box.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+
+
+    setLanguage("en");
+
+  </script>
+
+</body>
+</html>
