@@ -1294,15 +1294,42 @@ async function askStoryLens() {
       data.answer;
 
 
-    if (data.grounded) {
+const insufficientInformation =
+  data.answer.includes(
+    "I don't have enough verified information"
+  ) ||
+  data.answer.includes(
+    "沒有足夠的已驗證資訊"
+  ) ||
+  data.answer.includes(
+    "沒有足夠的可信資訊"
+  ) ||
+  data.answer.includes(
+    "現有資料不足"
+  ) ||
+  data.answer.includes(
+    "知識庫中沒有足夠"
+  );
 
-      groundedBadge.innerText =
-        text.grounded;
+if (insufficientInformation) {
 
-      groundedBadge.style.display =
-        "inline-block";
+  groundedBadge.innerText =
+    currentLanguage === "zh"
+      ? "◇ 現有可信資料不足 · StoryLens 選擇不進行推測"
+      : "◇ Insufficient verified information · StoryLens chose not to speculate.";
 
-    }
+  groundedBadge.style.display =
+    "inline-block";
+
+} else if (data.grounded) {
+
+  groundedBadge.innerText =
+    text.grounded;
+
+  groundedBadge.style.display =
+    "inline-block";
+
+}
 
 
     if (
