@@ -1289,6 +1289,18 @@ async function askStoryLens() {
 
     }
 
+        // Record a successful AI interaction
+fetch("https://storylens-ai.410222st.workers.dev/analytics", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    event: "ai_question"
+  })
+}).catch(error => {
+  console.log("Analytics unavailable:", error);
+});
 
     answerText.innerText =
       data.answer;
