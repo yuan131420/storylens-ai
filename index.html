@@ -348,6 +348,19 @@
     </footer>
 
   </div>
-
+<script>
+  fetch("https://storylens-ai.410222st.workers.dev/analytics", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      event: "page_view"
+    })
+  }).catch(error => {
+    console.log("Analytics unavailable:", error);
+  });
+</script>
+  
 </body>
 </html>
