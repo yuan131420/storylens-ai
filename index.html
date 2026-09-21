@@ -343,9 +343,11 @@
     </main>
 
 
-    <footer>
-      StoryLens AI · Prototype for ICIC 2026
-    </footer>
+<footer>
+  StoryLens AI · Prototype for ICIC 2026
+  <br>
+  <span id="viewCount">👁 Loading views...</span>
+</footer>
 
   </div>
 <script>
@@ -360,6 +362,20 @@
   }).catch(error => {
     console.log("Analytics unavailable:", error);
   });
+
+fetch("https://storylens-ai.410222st.workers.dev/stats")
+  .then(response => response.json())
+  .then(data => {
+    const viewCount = document.getElementById("viewCount");
+
+    if (viewCount) {
+      viewCount.innerText = `👁 ${data.pageViews} views`;
+    }
+  })
+  .catch(error => {
+    console.log("Could not load view count:", error);
+  });
+  
 </script>
   
 </body>
