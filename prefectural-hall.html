@@ -1148,6 +1148,20 @@ function setLanguage(language) {
 
 function showStory(mode, scroll = true) {
 
+if (scroll) {
+  fetch("https://storylens-ai.410222st.workers.dev/analytics", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      event: "story_interaction"
+    })
+  }).catch(error => {
+    console.log("Analytics unavailable:", error);
+  });
+}
+  
   currentStoryMode = mode;
 
   const story =
