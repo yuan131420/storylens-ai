@@ -1093,6 +1093,20 @@
 
     function showStory(mode, shouldScroll = true) {
 
+if (shouldScroll) {
+  fetch("https://storylens-ai.410222st.workers.dev/analytics", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      event: "story_interaction"
+    })
+  }).catch(error => {
+    console.log("Analytics unavailable:", error);
+  });
+}
+      
       currentStoryMode = mode;
 
       const story =
